@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import GlobalFooter from '../components/GlobalFooter.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <h1>WELL WELL</h1>
+    <GlobalFooter />
   </main>
 </template>
