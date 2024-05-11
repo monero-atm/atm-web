@@ -6,6 +6,9 @@ export default {
       colors: {
         'monero-orange': '#FF6600',
         'monero-grey': '#4c4c4c'
+      },
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif']
       }
     }
   },

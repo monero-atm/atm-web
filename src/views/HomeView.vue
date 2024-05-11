@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import GlobalFooter from '../components/GlobalFooter.vue'
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <main>
-    <h1>WELL WELL</h1>
-    <img src="../assets/monero-xmr-logo-full.svg" alt="">
-    <GlobalFooter />
-  </main>
+  <div class="flex flex-col items-center justify-items-center">
+    <p class="text-6xl font-black text-monero-grey m-9">Scan the QR code to begin</p>
+    <img class="max-w-33 max-h-48" src="../assets/Groupmonero-arrow.svg" alt="Arrow pointing upwards">
+    <p class="text-lg font-semibold text-monero-grey m-3">Find the camera above the screen</p>
+    <RouterLink class="rounded-3xl bg-monero-orange py-2 px-5 text-2xl text-white min-w-50 m-10">Or enter wallet ID
+    </RouterLink>
+  </div>
 </template>
