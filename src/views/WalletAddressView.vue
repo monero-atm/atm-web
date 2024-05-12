@@ -1,7 +1,18 @@
 <template>
-  <div>
-    <p class="font-black">Indication for stacked layout</p>
-    <input class="input" />
+  <div class="flex flex-col">
+    <div class="flex flex-col justify-center items-center flex-grow">
+      <p class="text-lg font-medium text-monero-grey m-3">Wallet ID:</p>
+      <input class="input bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-xl text-center" />
+    </div>
+    <div class="flex justify-between items-center m-5">
+      <RouterLink
+        class="hover:bg-opacity-150 rounded-3xl bg-white border border-black py-1 px-3 text-xl text-monero-grey" to="/">
+        Go
+        back
+      </RouterLink>
+      <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-1 px-3 text-xl text-white" to="/wallet">
+        Continue >>></RouterLink>
+    </div>
   </div>
 </template>
 

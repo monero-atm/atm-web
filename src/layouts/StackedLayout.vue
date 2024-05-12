@@ -4,12 +4,9 @@ import GlobalFooter from '../components/GlobalFooter.vue'
 </script>
 
 <template>
-
-  <GlobalHeader />
-  <main>
-    <div class="container px-1 py-2 md:mx-auto">
-      <RouterView />
-    </div>
-  </main>
-  <GlobalFooter />
+  <div class="flex flex-col min-h-screen min-w-screen">
+    <GlobalHeader />
+    <RouterView class="h-full flex-grow px-1 py-2" />
+    <GlobalFooter />
+  </div>
 </template>
