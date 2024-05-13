@@ -10,7 +10,8 @@ import { RouterLink } from 'vue-router'
     </div>
     <div class="flex justify-between items-center m-5">
       <RouterLink
-        class="hover:brightness-90 rounded-3xl bg-white border border-black py-1 px-3 text-xl text-monero-grey" to="/">
+        class="hover:brightness-90 rounded-3xl bg-white border border-black py-1 px-3 text-xl text-monero-grey"
+        to="/cancel">
         Cancel
       </RouterLink>
       <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-1 px-3 text-xl text-white" to="/payment">
