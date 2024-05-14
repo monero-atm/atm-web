@@ -24,9 +24,9 @@ const router = createRouter({
           component: () => import('../views/PaymentView.vue')
         },
         {
-          path: '/cancel',
-          name: 'Cancel',
-          component: () => import('../views/CancelView.vue'),
+          path: '/error/:errorType',
+          name: 'Error',
+          component: () => import('../views/ErrorView.vue'),
           meta: { hideHeader: true }
         }
       ]
