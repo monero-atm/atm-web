@@ -14,7 +14,8 @@ import { RouterLink } from 'vue-router'
         :to="{ name: 'Error', params: { errorType: 'cancelled' } }">
         Cancel
       </RouterLink>
-      <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-1 px-3 text-xl text-white" to="/payment">
+      <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-1 px-3 text-xl text-white"
+        :to="{ name: 'Payment' }">
         Continue >>></RouterLink>
 
     </div>
