@@ -1,5 +1,16 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import { useSessionStore } from '@/stores/session';
+
+const sessionStore = useSessionStore()
+
+/*
+Implementation for getting the currency and amount from the
+cash acceptor
+also if we there is a thought of implementing a countdown here too
+then it's best to reset that timer whenever the user deposits more
+*/
+
 </script>
 
 <template>
@@ -12,7 +23,8 @@ import { RouterLink } from 'vue-router'
     <div class="flex justify-between items-center m-5">
       <RouterLink
         class="hover:brightness-90 rounded-3xl bg-white border border-black py-1 px-3 text-xl text-monero-grey"
-        :to="{ name: 'Error', params: { errorType: 'cancelled' } }">
+        :to="{ name: 'Error', params: { errorType: 'cancelled' } }"
+        :style="{ visibility: sessionStore.moneyAmount == 0 ? 'visible' : 'hidden' }">
         Cancel
       </RouterLink>
       <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-1 px-3 text-xl text-white"

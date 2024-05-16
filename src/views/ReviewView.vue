@@ -1,13 +1,13 @@
 <template>
   <div class="flex flex-col">
     <div class="flex flex-col justify-center items-center flex-grow">
-      <p class="text-lg font-semibold text-monero-grey m-3">Inserted Cash:</p>
+      <p class="text-lg font-semibold text-monero-grey m-3">Inserted Cash:{{ sessionStore.moneyAmount }}</p>
       <input readonly class="input bg-monero-orange text-white rounded-3xl py-2 px-4 text-xl text-center" />
 
-      <p class="text-lg font-semibold text-monero-grey m-3">Monero amount:</p>
+      <p class="text-lg font-semibold text-monero-grey m-3">Monero amount:{{ sessionStore.moneroAmount }}</p>
       <input readonly class="input bg-monero-orange text-white rounded-3xl py-2 px-4 text-xl text-center" />
 
-      <p class="text-lg font-semibold text-monero-grey m-3">Destination address:</p>
+      <p class="text-lg font-semibold text-monero-grey m-3">Destination address:{{ sessionStore.walletAddress }}</p>
       <input readonly class="input bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-xl text-center" />
     </div>
     <div class="flex justify-end items-center m-5">
@@ -21,9 +21,11 @@
 <script setup lang="ts">
 import { RouterLink, useRouter } from 'vue-router'
 import { ref, onUnmounted } from 'vue'
+import { useSessionStore } from '@/stores/session';
 
 let seconds = ref(60)
 const router = useRouter()
+const sessionStore = useSessionStore()
 
 
 

@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { RouterLink, useRouter } from 'vue-router'
 import { ref, onUnmounted } from 'vue'
+import { useSessionStore } from '@/stores/session';
 
 let seconds = ref(10)
 const router = useRouter()
+const sessionStore = useSessionStore()
 
 
 
@@ -26,9 +28,10 @@ onUnmounted(() => {
     <div class="flex flex-col flex-grow justify-center gap-3 items-center">
       <p class="text-6xl text-center font-black text-white m-9">TRANSACTION COMPLETED</p>
       <img class="max-w-33 max-h-48" src="../assets/Vectorsuccess.svg" alt="Arrow pointing upwards">
-      <p class="text-4xl text-center font-black text-white">1.55XRM</p>
+      <p class="text-4xl text-center font-black text-white">{{ sessionStore.moneroAmount }} XMR</p>
       <p class="text-3xl text-center font-medium text-white">Has SENT TO:</p>
-      <input readonly class="input bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-xl text-center" />
+      <input readonly class="input bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-xl text-center"
+        :input="sessionStore.walletAddress" />
     </div>
     <div class="flex justify-end items-center m-5">
       <RouterLink

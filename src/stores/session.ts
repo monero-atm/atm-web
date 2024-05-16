@@ -4,9 +4,14 @@ import { useExchangeRateStore } from './exchangeRate'
 
 export const useSessionStore = defineStore('session', () => {
   const walletAddress = ref('')
-  const moneyAmount = ref(0)
-  const selectedCurrency = ref('')
   const moneroAmount = ref(0)
+
+  //ONLY FOR TEST PURPOSES
+  const moneyAmount = ref(133)
+  const selectedCurrency = ref('eur')
+
+  // const moneyAmount = ref(0)
+  // const selectedCurrency = ref('')
 
   //please remove this after implementing the
   //conversion from the db

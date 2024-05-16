@@ -2,7 +2,8 @@
   <div class="flex flex-col">
     <div class="flex flex-col justify-center items-center flex-grow">
       <p class="text-lg font-semibold text-monero-grey m-3">Wallet ID:</p>
-      <input readonly class="input bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-xl text-center" />
+      <input readonly class="input bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-xl text-center"
+        :value="sessionStore.walletAddress" />
     </div>
     <div class="flex justify-between items-center m-5">
       <RouterLink
@@ -20,9 +21,11 @@
 <script setup lang="ts">
 import { RouterLink, useRouter } from 'vue-router'
 import { ref, onUnmounted } from 'vue'
+import { useSessionStore } from '@/stores/session';
 
 let seconds = ref(15)
 const router = useRouter()
+const sessionStore = useSessionStore()
 
 
 
