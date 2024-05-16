@@ -36,7 +36,7 @@ const errorMessage = computed(() => {
   <div class="flex flex-col bg-monero-orange">
     <div class="flex flex-col flex-grow justify-center gap-3 items-center">
       <p class="text-6xl text-center font-black text-white m-9">{{ errorMessage }}</p>
-      <img class="max-w-33 max-h-48" src="../assets/vectorcancel-x.svg" alt="Arrow pointing upwards">
+      <img class="max-w-33 max-h-48" src="../assets/Vectorcancel-x.svg" alt="Arrow pointing upwards">
     </div>
     <div class="flex justify-end items-center m-5">
       <RouterLink
