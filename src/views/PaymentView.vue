@@ -11,6 +11,10 @@ also if we there is a thought of implementing a countdown here too
 then it's best to reset that timer whenever the user deposits more
 */
 
+//ONLY FOR TEST PURPOSES
+sessionStore.setCurrency('eur')
+sessionStore.addMoney(213)
+
 </script>
 
 <template>
