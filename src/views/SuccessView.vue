@@ -31,7 +31,7 @@ onUnmounted(() => {
       <p class="text-4xl text-center font-black text-white">{{ sessionStore.moneroAmount }} XMR</p>
       <p class="text-3xl text-center font-medium text-white">Has SENT TO:</p>
       <input readonly class="input bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-xl text-center"
-        :input="sessionStore.walletAddress" />
+        :value="sessionStore.walletAddress" />
     </div>
     <div class="flex justify-end items-center m-5">
       <RouterLink
