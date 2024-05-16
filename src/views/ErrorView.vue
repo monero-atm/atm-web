@@ -12,7 +12,7 @@ const intervalId = setInterval(() => {
   seconds.value--
   if (seconds.value === 0) {
     clearInterval(intervalId)
-    router.push('/')
+    router.push({ name: 'Home' })
   }
 }, 1000)
 

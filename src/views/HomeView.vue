@@ -1,5 +1,14 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import { useSessionStore } from '@/stores/session';
+import { onBeforeMount } from 'vue';
+
+const sessionStore = useSessionStore()
+
+
+onBeforeMount(() => {
+  sessionStore.clearSession()
+})
 </script>
 
 <template>
@@ -12,9 +21,8 @@ import { RouterLink } from 'vue-router'
     </div>
     <div class="flex justify-center">
       <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-2 px-5 text-2xl text-white min-w-50 m-10"
-        :to="{ name: 'Wallet' }">Or
-        enter
-        wallet ID
+        :to="{ name: 'Wallet' }">
+        Continue (test)
       </RouterLink>
     </div>
 
