@@ -24,9 +24,20 @@ const router = createRouter({
           component: () => import('../views/PaymentView.vue')
         },
         {
+          path: '/review',
+          name: 'Review',
+          component: () => import('../views/ReviewView.vue')
+        },
+        {
           path: '/error/:errorType',
           name: 'Error',
           component: () => import('../views/ErrorView.vue'),
+          meta: { hideHeader: true }
+        },
+        {
+          path: '/success',
+          name: 'Success',
+          component: () => import('../views/SuccessView.vue'),
           meta: { hideHeader: true }
         }
       ]

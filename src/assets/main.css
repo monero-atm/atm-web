@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.rotate-left {
+  transform: rotate(-90deg);
+}
+
+.rotate-right{
+  transform: rotate(90deg);
+}
