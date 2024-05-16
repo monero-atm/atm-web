@@ -39,6 +39,10 @@ const router = createRouter({
           name: 'Success',
           component: () => import('../views/SuccessView.vue'),
           meta: { hideHeader: true }
+        },
+        {
+          path: ':pathMatch(.*)*',
+          redirect: { name: 'Home' }
         }
       ]
     }
