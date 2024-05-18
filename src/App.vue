@@ -4,7 +4,6 @@ import { useExchangeRateStore } from './stores/exchangeRate'
 
 const exchangeRateStore = useExchangeRateStore()
 exchangeRateStore.startRefetching()
-
 </script>
 
 <template>
