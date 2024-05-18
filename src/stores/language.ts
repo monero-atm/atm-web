@@ -26,21 +26,11 @@ export const useLanguageStore = defineStore('language', () => {
     component: T
   ): ComputedRef<TranslationKeys[T]> {
     return computed(() => {
-      const lang = selectedLanguage.value
-      return translations[lang][component] || translations[defaultLanguage][component]
+      return (
+        translations[selectedLanguage.value][component] || translations[defaultLanguage][component]
+      )
     })
   }
-
-  // const getContent = (component: keyof TranslationKeys) => {
-  //   return computed(() => {
-  //     const lang = selectedLanguage.value
-  //     return translations[lang][component] || translations[defaultLanguage][component]
-  //   })
-  // }
-  // function getContent<T extends keyof TranslationKeys>(component: T): TranslationKeys[T] {
-  //   const lang = selectedLanguage.value
-  //   return translations[lang][component] || translations[defaultLanguage][component]
-  // }
 
   return {
     selectedLanguage,
