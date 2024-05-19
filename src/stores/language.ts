@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import { en } from '../languages/en'
 import { cz } from '../languages/cz'
 import { lt } from '../languages/lt'
+import { es } from '../languages/es'
 import type { Translations, TranslationKeys } from '../types/translations'
 
 export const useLanguageStore = defineStore('language', () => {
@@ -11,7 +12,8 @@ export const useLanguageStore = defineStore('language', () => {
   const translations: Translations = {
     en,
     cz,
-    lt
+    lt,
+    es,
   }
 
   function setLanguage(language: string) {

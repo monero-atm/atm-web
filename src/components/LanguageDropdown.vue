@@ -6,7 +6,8 @@ import 'flag-icons/css/flag-icons.min.css'
 const flags: Record<string, string> = {
   en: 'fi fi-gb',
   cz: 'fi fi-cz',
-  lt: 'fi fi-lt'
+  lt: 'fi fi-lt',
+  es: 'fi fi-es',
 }
 
 const languageStore = useLanguageStore()
