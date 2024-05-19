@@ -4,6 +4,7 @@ import { en } from '../languages/en'
 import { cz } from '../languages/cz'
 import { lt } from '../languages/lt'
 import { es } from '../languages/es'
+import { ar } from '../languages/ar'
 import type { Translations, TranslationKeys } from '../types/translations'
 
 export const useLanguageStore = defineStore('language', () => {
@@ -14,6 +15,7 @@ export const useLanguageStore = defineStore('language', () => {
     cz,
     lt,
     es,
+    ar
   }
 
   function setLanguage(language: string) {

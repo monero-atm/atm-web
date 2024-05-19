@@ -8,6 +8,7 @@ const flags: Record<string, string> = {
   cz: 'fi fi-cz',
   lt: 'fi fi-lt',
   es: 'fi fi-es',
+  ar: 'fi fi-ar',
 }
 
 const languageStore = useLanguageStore()
