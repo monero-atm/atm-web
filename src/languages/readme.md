@@ -1,10 +1,10 @@
 # Adding a new language
 
-1. Create a new file with the name according to the `ISO 639-1` and write the translations as shown in the example:
+1. Create a new file with the name according to the `ISO 639-1` in the languages directory and write the translations as shown in the example:
    ![image](https://github.com/monero-atm/atm-web/assets/82507565/fc2b828e-c1e9-4539-837b-cead9e344770)
-2. Import the new added language to the language and add it to the translations object as shown in the example:
+2. Import the new added language to the language store and add it to the translations object as shown in the example:
    ![image](https://github.com/monero-atm/atm-web/assets/82507565/36f31be7-dcdb-45ad-8ec7-16b422b0fbfe)
-3. Add the new language to the selection/list.
+3. Add the new language to the selection/list.(src/components/LanguageDropdown.vue)
 
 ```typescript
 Before Lithuanian was added:
