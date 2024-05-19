@@ -1,6 +1,6 @@
 name: Tests
 
-on: push
+on: [push, pull_request]
 
 jobs:
   test:
@@ -20,10 +20,20 @@ jobs:
         run: npm ci
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps
 
       - name: Run lint
         run: npm run lint
 
+      - name: Build
+        run: npm run build
+
       - name: Run e2e tests
         run: npm run test:e2e
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
