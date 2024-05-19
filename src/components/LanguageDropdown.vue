@@ -33,19 +33,32 @@ watch(
 
 <template>
   <div class="relative inline-flex">
-    <button @click="toggleDropdown"
-      class="py-3 px-4 inline-flex items-center gap-x-2 rounded-lg border shadow-sm hover:bg-gray-50 bg-neutral-800 border-neutral-700 hover:bg-neutral-900">
+    <button
+      @click="toggleDropdown"
+      data-testid="language-selection-menu-button"
+      class="py-3 px-4 inline-flex items-center gap-x-2 rounded-lg border shadow-sm hover:bg-gray-50 bg-neutral-800 border-neutral-700 hover:bg-neutral-900"
+    >
       <span :class="[flags[selectedLanguage], { 'opacity-50': showDropdown }]"></span>
     </button>
 
-    <div v-if="showDropdown" class="absolute placement bottom-full px-4 mt-2 mb-3 shadow-lg rounded-lg bg-neutral-800">
-      <button v-for="(flagClass, lang) in flags" :key="lang" @click="() => changeLanguage(lang)"
-        class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg hover:bg-gray-100 focus:bg-gray-100 hover:bg-neutral-700">
-        <span :class="[
-      flagClass,
-      'w-8 h-8 rounded-full transition-opacity',
-      { 'opacity-25': selectedLanguage === lang }
-    ]"></span>
+    <div
+      v-if="showDropdown"
+      class="absolute placement bottom-full px-4 mt-2 mb-3 shadow-lg rounded-lg bg-neutral-800"
+    >
+      <button
+        v-for="(flagClass, lang) in flags"
+        :key="lang"
+        @click="() => changeLanguage(lang)"
+        :data-testid="`language-option-${lang}`"
+        class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg hover:bg-gray-100 focus:bg-gray-100 hover:bg-neutral-700"
+      >
+        <span
+          :class="[
+            flagClass,
+            'w-8 h-8 rounded-full transition-opacity',
+            { 'opacity-25': selectedLanguage === lang }
+          ]"
+        ></span>
       </button>
     </div>
   </div>

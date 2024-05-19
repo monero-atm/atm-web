@@ -40,12 +40,14 @@ onUnmounted(() => {
         readonly
         class="input bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-xl text-center"
         :value="sessionStore.walletAddress"
+        data-testid="wallet-address-success"
       />
     </div>
     <div class="flex justify-end items-center m-5">
       <RouterLink
         class="hover:brightness-90 rounded-3xl bg-monero-orange border border-white py-1 px-3 text-xl text-white"
         :to="{ name: 'Home' }"
+        data-testid="return-home-button"
       >
         {{ buttons.continue }} ({{ seconds }}{{ buttons.seconds }})</RouterLink
       >
