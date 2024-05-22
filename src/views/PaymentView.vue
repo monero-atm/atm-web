@@ -46,6 +46,7 @@ sessionStore.addMoney(213)
       <RouterLink
         class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-1 px-3 text-xl text-white"
         :to="{ name: 'Review' }"
+        :style="{ visibility: sessionStore.moneyAmount == 0 ? 'hidden' : 'visible' }"
         data-testid="continue-transaction-button-payment"
       >
         {{ buttons.continue }}

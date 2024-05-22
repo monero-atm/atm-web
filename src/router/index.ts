@@ -9,9 +9,14 @@ const router = createRouter({
       component: StackedLayout,
       children: [
         {
-          path: '',
+          path: '/',
           name: 'Home',
-          component: () => import('../views/HomeView.vue')
+          component: () => import('../views/IdleView.vue')
+        },
+        {
+          path: '/scan',
+          name: 'Scan',
+          component: () => import('../views/ScanView.vue')
         },
         {
           path: '/wallet',

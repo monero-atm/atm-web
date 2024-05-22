@@ -2,6 +2,11 @@ import type { TranslationKeys } from '../types/translations'
 
 export const cz: TranslationKeys = {
   home: {
+    title: 'NOT_TRANSLATED',
+    euroDescription: 'NOT_TRANSLATED',
+    czechKorunaDescription: 'NOT_TRANSLATED'
+  },
+  scan: {
     title: 'Naskenujte QR kód pro zahájení',
     instruction: 'Nalezněte skener vedle obrazovky'
   },
@@ -29,6 +34,7 @@ export const cz: TranslationKeys = {
   buttons: {
     cancel: 'Zrušit',
     continue: 'Pokračovat',
-    seconds: 'sek.'
+    seconds: 'sek.',
+    start: 'NOT_TRANSLATED'
   }
 }

@@ -2,6 +2,11 @@ import type { TranslationKeys } from '../types/translations'
 
 export const en: TranslationKeys = {
   home: {
+    title: 'ACCEPTED CURRENCIES',
+    euroDescription: 'Euro',
+    czechKorunaDescription: 'Czech Koruna'
+  },
+  scan: {
     title: 'Scan the QR code to begin',
     instruction: 'Find the scanner next to the screen'
   },
@@ -29,6 +34,7 @@ export const en: TranslationKeys = {
   buttons: {
     cancel: 'Cancel',
     continue: 'Continue',
-    seconds: 'sec.'
+    seconds: 'sec.',
+    start: 'Start a transaction'
   }
 }

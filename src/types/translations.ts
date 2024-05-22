@@ -1,4 +1,10 @@
-export type HomeTranslations = {
+export type Home = {
+  title: string
+  euroDescription: string
+  czechKorunaDescription: string
+}
+
+export type ScanTranslations = {
   title: string
   instruction: string
 }
@@ -33,10 +39,12 @@ export type ButtonTranslations = {
   cancel: string
   continue: string
   seconds: string
+  start: string
 }
 
 export type TranslationKeys = {
-  home: HomeTranslations
+  home: Home
+  scan: ScanTranslations
   wallet: WalletTranslations
   payment: PaymentTranslations
   review: ReviewTranslations

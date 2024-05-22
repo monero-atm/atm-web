@@ -8,7 +8,7 @@ const router = useRouter()
 const sessionStore = useSessionStore()
 const languageStore = useLanguageStore()
 
-const content = languageStore.getContent('home')
+const content = languageStore.getContent('scan')
 
 //remove before production
 const testWalletId =
@@ -33,9 +33,7 @@ function handleScannerInput(event: KeyboardEvent) {
 }
 
 onBeforeMount(() => {
-  sessionStore.clearSession()
   window.addEventListener('keydown', handleScannerInput)
-  languageStore.resetLanguage()
 })
 
 onUnmounted(() => {
@@ -52,7 +50,7 @@ function test() {
 <template>
   <div class="flex flex-col justify-center">
     <div class="flex flex-col items-center">
-      <p class="text-6xl text-center font-black text-monero-grey m-9" data-testid="title-homepage">
+      <p class="text-6xl text-center font-black text-monero-grey m-9" data-testid="title-scanpage">
         {{ content.title }}
       </p>
       <img

@@ -20,10 +20,13 @@ const flags: Record<string, string> = {
   lt: 'fi fi-lt'
 }
 ```
+
 The country code should be [taken from here](https://www.iso.org/obp/ui/#search/code/) and implemented like so:
+
 ```typescript
 'ISO 639-1 code for the language': 'fi fi-ISO 3166-1-alpha-2 code of a country'
 ```
+
 These rules should be followed for a static and managable structure. (Not following them might and will result in errors. e.g incorrect flag representing the language)
 
 ![image](https://github.com/monero-atm/atm-web/assets/82507565/11ad6706-6063-47db-a8bc-23caa6cd5bc2)
