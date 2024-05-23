@@ -30,7 +30,7 @@ export const en: TranslationKeys = {
   },
   success: {
     title: 'TRANSACTION COMPLETED',
-    secondTitle: 'Has SENT TO:'
+    secondTitle: 'Was successfully sent'
   },
   buttons: {
     cancel: 'Cancel',

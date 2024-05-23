@@ -1,0 +1,51 @@
+{
+  "width": 150,
+  "height": 150,
+  "margin": 0,
+  "qrOptions": { "typeNumber": "0", "mode": "Byte", "errorCorrectionLevel": "H" },
+  "imageOptions": { "hideBackgroundDots": true, "imageSize": 0.3, "margin": 0 },
+  "dotsOptions": { "type": "square", "color": "#4c4c4c", "gradient": null },
+  "backgroundOptions": { "color": "#ffffff" },
+  "dotsOptionsHelper": {
+    "colorType": { "single": true, "gradient": false },
+    "gradient": {
+      "linear": true,
+      "radial": false,
+      "color1": "#6a1a4c",
+      "color2": "#6a1a4c",
+      "rotation": "0"
+    }
+  },
+  "cornersSquareOptions": { "type": "square", "color": "#4c4c4c", "gradient": null },
+  "cornersSquareOptionsHelper": {
+    "colorType": { "single": true, "gradient": false },
+    "gradient": {
+      "linear": true,
+      "radial": false,
+      "color1": "#000000",
+      "color2": "#000000",
+      "rotation": "0"
+    }
+  },
+  "cornersDotOptions": { "type": "", "color": "#ff6600" },
+  "cornersDotOptionsHelper": {
+    "colorType": { "single": true, "gradient": false },
+    "gradient": {
+      "linear": true,
+      "radial": false,
+      "color1": "#000000",
+      "color2": "#000000",
+      "rotation": "0"
+    }
+  },
+  "backgroundOptionsHelper": {
+    "colorType": { "single": true, "gradient": false },
+    "gradient": {
+      "linear": true,
+      "radial": false,
+      "color1": "#ffffff",
+      "color2": "#ffffff",
+      "rotation": "0"
+    }
+  }
+}

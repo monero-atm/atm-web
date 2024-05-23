@@ -2,7 +2,7 @@
 import { RouterLink, useRouter, useRoute } from 'vue-router'
 import { ref, onUnmounted, computed } from 'vue'
 import { useLanguageStore } from '@/stores/language'
-import type { ErrorTranslations } from '@/types/translations';
+import type { ErrorTranslations } from '@/types/translations'
 
 let seconds = ref(10)
 const router = useRouter()
@@ -34,13 +34,19 @@ const errorMessage = computed(() => {
   <div class="flex flex-col bg-monero-orange">
     <div class="flex flex-col flex-grow justify-center gap-3 items-center">
       <p class="text-6xl text-center font-black text-white m-9">{{ errorMessage }}</p>
-      <img class="max-w-33 max-h-48" src="../assets/Vectorcancel-x.svg" alt="Arrow pointing upwards" />
+      <img
+        class="max-w-33 max-h-48"
+        src="../assets/Vectorcancel-x.svg"
+        alt="Arrow pointing upwards"
+      />
     </div>
     <div class="flex justify-end items-center m-5">
       <RouterLink
         class="hover:brightness-90 rounded-3xl bg-monero-orange border border-white py-2 px-4 text-3xl text-white"
-        :to="{ name: 'Home' }">
-        {{ buttons.continue }} ({{ seconds }}{{ buttons.seconds }})</RouterLink>
+        :to="{ name: 'Home' }"
+      >
+        {{ buttons.continue }} ({{ seconds }}{{ buttons.seconds }})</RouterLink
+      >
     </div>
   </div>
 </template>

@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { RouterLink, useRouter } from 'vue-router'
-import { ref, onUnmounted } from 'vue'
+import { ref, onUnmounted, computed } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import { useLanguageStore } from '@/stores/language'
+import QRCodeVue3 from 'qrcode-vue3'
+import qrOptions from '../assets/options.json'
+import moneroLogo from '../assets/monero-xmr-logo.svg'
 
-let seconds = ref(10)
+let seconds = ref(1000)
 const router = useRouter()
 const sessionStore = useSessionStore()
 const languageStore = useLanguageStore()
@@ -12,6 +15,7 @@ const languageStore = useLanguageStore()
 const content = languageStore.getContent('success')
 const buttons = languageStore.getContent('buttons')
 
+const config = qrOptions
 const intervalId = setInterval(() => {
   seconds.value--
   if (seconds.value === 0) {
@@ -23,17 +27,29 @@ const intervalId = setInterval(() => {
 onUnmounted(() => {
   clearInterval(intervalId)
 })
+
+const rows = computed(() => Math.ceil(sessionStore.transactionId.length / 80))
 </script>
 
 <template>
   <div class="flex flex-col bg-monero-orange">
-    <div class="flex flex-col flex-grow justify-center gap-3 items-center">
+    <div class="flex flex-col flex-grow justify-center items-center success">
       <p class="text-6xl text-center font-black text-white m-9">{{ content.title }}</p>
-      <img class="max-w-33 max-h-48" src="../assets/Vectorsuccess.svg" alt="Arrow pointing upwards" />
-      <p class="text-4xl text-center font-black text-white">{{ sessionStore.moneroAmount }} XMR</p>
-      <p class="text-3xl text-center font-medium text-white">{{ content.secondTitle }}</p>
-      <input readonly class="input bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-xl text-center"
-        :value="sessionStore.walletAddress" data-testid="wallet-address-success" />
+      <img class="max-w-33 max-h-48 mb-16" src="../assets/Vectorsuccess.svg" alt="Arrow pointing upwards" />
+      <p class="text-xl font-semibold text-white m-2">Transaction ID:</p>
+      <textarea readonly
+        class="input break-all bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-2xl text-center resize-none mb-2"
+        :value="sessionStore.transactionId" :rows="rows" data-testid="transaction-id-success" />
+
+      <p class="text-xl font-semibold text-white m-2">Block:</p>
+      <input id="block-address" class="input bg-monero-grey text-white rounded-3xl py-2 px-4 text-xl text-center mb-16"
+        :value="sessionStore.block" />
+
+      <p class="text-xl font-medium text-white m-2">Transaction ID:</p>
+      <QRCodeVue3 :width="config.width" :height="config.height" :value="sessionStore.transactionId" :image="moneroLogo"
+        :margin="config.margin" :qrOptions="config.qrOptions" :imageOptions="config.imageOptions"
+        :dotsOptions="config.dotsOptions" :backgroundOptions="config.backgroundOptions"
+        :cornersSquareOptions="config.cornersSquareOptions" :cornersDotOptions="config.cornersDotOptions" />
     </div>
     <div class="flex justify-end items-center m-5">
       <RouterLink

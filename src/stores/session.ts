@@ -8,6 +8,10 @@ export const useSessionStore = defineStore('session', () => {
   const moneyAmount = ref(0)
   const selectedCurrency = ref('')
 
+  // add the functionality for getting them from the server
+  const transactionId = ref('7a6111c62babea729d79a5623ff7e256704cc213dab40507fb149a47a98e617d')
+  const block = ref('3,051,784')
+
   //please remove this after implementing the
   //conversion from the db
   const exchangeRate = useExchangeRateStore()
@@ -43,6 +47,8 @@ export const useSessionStore = defineStore('session', () => {
     selectedCurrency,
     moneyAmount,
     moneroAmount,
+    transactionId,
+    block,
     setWalletAddress,
     setCurrency,
     addMoney,

@@ -16,6 +16,7 @@
   "dependencies": {
     "flag-icons": "^7.2.1",
     "pinia": "^2.1.7",
+    "qrcode-vue3": "^1.6.8",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
