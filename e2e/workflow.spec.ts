@@ -31,10 +31,10 @@ test('happy path without expects', async ({ page }) => {
 
   await page.getByTestId('continue-transaction-button-payment').click()
 
-  await expect(page.getByTestId('wallet-address-review')).toHaveText(address)
+  await expect(page.getByTestId('wallet-address')).toHaveText(address)
   await page.getByTestId('continue-transaction-button-review').click()
 
-  await expect(page.getByTestId('wallet-address-success')).toHaveText(address)
+  await expect(page.getByTestId('wallet-address')).toHaveText(address)
   await page.getByTestId('return-home-button').click()
 })
 

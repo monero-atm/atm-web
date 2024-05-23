@@ -2,14 +2,14 @@
 import { RouterLink, useRouter, useRoute } from 'vue-router'
 import { ref, onUnmounted, computed } from 'vue'
 import { useLanguageStore } from '@/stores/language'
+import type { ErrorTranslations } from '@/types/translations';
 
 let seconds = ref(10)
 const router = useRouter()
 const route = useRoute()
-const errorType = String(route.params.errorType)
+const errorType = ref(String(route.params.errorType))
 const languageStore = useLanguageStore()
 
-const content = languageStore.getContent('error')
 const buttons = languageStore.getContent('buttons')
 
 const intervalId = setInterval(() => {
@@ -25,7 +25,8 @@ onUnmounted(() => {
 })
 
 const errorMessage = computed(() => {
-  return content[errorType as keyof typeof content] || 'Unknown Error'
+  const errorTranslations = languageStore.getContent('error')
+  return errorTranslations.value[errorType.value as keyof ErrorTranslations] || 'Unknown Error'
 })
 </script>
 
