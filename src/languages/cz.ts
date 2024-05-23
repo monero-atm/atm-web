@@ -11,7 +11,8 @@ export const cz: TranslationKeys = {
     instruction: 'Nalezněte skener vedle obrazovky'
   },
   wallet: {
-    title: 'ID peněženky:'
+    title: 'NOT_TRANSLATED',
+    secondTitle: 'ID peněženky:'
   },
   payment: {
     title: 'Vložte své peníze',

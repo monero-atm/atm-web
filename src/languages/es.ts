@@ -11,7 +11,8 @@ export const es: TranslationKeys = {
     instruction: 'Busque el escáner junto a la pantalla'
   },
   wallet: {
-    title: 'ID de la billetera:'
+    title: 'NOT_TRANSLATED',
+    secondTitle: 'ID de la billetera:'
   },
   payment: {
     title: 'Inserta tu dinero',

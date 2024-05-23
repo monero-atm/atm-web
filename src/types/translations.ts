@@ -11,6 +11,7 @@ export type ScanTranslations = {
 
 export type WalletTranslations = {
   title: string
+  secondTitle: string
 }
 
 export type PaymentTranslations = {

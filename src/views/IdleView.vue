@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useLanguageStore } from '@/stores/language';
 import { useSessionStore } from '@/stores/session';
-import { computed, onBeforeMount, watch } from 'vue';
+import { computed, onBeforeMount } from 'vue';
 import { RouterLink } from 'vue-router';
 import euroImage from '../assets/euro.jpg';
 import czechKorunaImage from '../assets/czech-koruna.jpg';

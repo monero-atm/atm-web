@@ -11,7 +11,8 @@ export const en: TranslationKeys = {
     instruction: 'Find the scanner next to the screen'
   },
   wallet: {
-    title: 'Wallet ID:'
+    title: 'Verify your wallet address',
+    secondTitle: 'Wallet ID:'
   },
   payment: {
     title: 'Insert your money',

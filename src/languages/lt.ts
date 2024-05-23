@@ -11,7 +11,8 @@ export const lt: TranslationKeys = {
     instruction: 'Raskite skaitytuvą šalia ekrano'
   },
   wallet: {
-    title: 'Piniginės ID:'
+    title: 'NOT_TRANSLATED',
+    secondTitle: 'Piniginės ID:'
   },
   payment: {
     title: 'Įdėkite savo pinigus',

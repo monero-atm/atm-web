@@ -11,7 +11,8 @@ export const ar: TranslationKeys = {
     instruction: 'ابحث عن الماسح المجاور للشاشة'
   },
   wallet: {
-    title: 'هوية المحفظة:'
+    title: 'NOT_TRANSLATED',
+    secondTitle: 'هوية المحفظة:'
   },
   payment: {
     title: 'أدخل أموالك',
