@@ -36,16 +36,16 @@ const rows = computed(() => Math.ceil(sessionStore.transactionId.length / 80))
     <div class="flex flex-col flex-grow justify-center items-center success">
       <p class="text-6xl text-center font-black text-white m-9">{{ content.title }}</p>
       <img class="max-w-33 max-h-48 mb-16" src="../assets/Vectorsuccess.svg" alt="Arrow pointing upwards" />
-      <p class="text-xl font-semibold text-white m-2">Transaction ID:</p>
+      <p class="text-xl font-semibold text-white m-2">{{ content.secondTitle }}</p>
       <textarea readonly
         class="input break-all bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-2xl text-center resize-none mb-2"
         :value="sessionStore.transactionId" :rows="rows" data-testid="transaction-id-success" />
 
-      <p class="text-xl font-semibold text-white m-2">Block:</p>
+      <p class="text-xl font-semibold text-white m-2">{{ content.thirdTitle }}</p>
       <input id="block-address" class="input bg-monero-grey text-white rounded-3xl py-2 px-4 text-xl text-center mb-16"
         :value="sessionStore.block" />
 
-      <p class="text-xl font-medium text-white m-2">Transaction ID:</p>
+      <p class="text-xl font-medium text-white m-2">{{ content.secondTitle }}</p>
       <QRCodeVue3 :width="config.width" :height="config.height" :value="sessionStore.transactionId" :image="moneroLogo"
         :margin="config.margin" :qrOptions="config.qrOptions" :imageOptions="config.imageOptions"
         :dotsOptions="config.dotsOptions" :backgroundOptions="config.backgroundOptions"

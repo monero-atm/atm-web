@@ -30,7 +30,8 @@ export const ar: TranslationKeys = {
   },
   success: {
     title: 'اكتملت المعاملة',
-    secondTitle: 'تم إرساله إلى:'
+    secondTitle: 'NOT_TRANSLATED',
+    thirdTitle: 'NOT_TRANSLATED'
   },
   buttons: {
     cancel: 'إلغاء',

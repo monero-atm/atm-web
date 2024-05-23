@@ -34,6 +34,7 @@ export type ErrorTranslations = {
 export type SuccessTranslations = {
   title: string
   secondTitle: string
+  thirdTitle: string
 }
 
 export type ButtonTranslations = {

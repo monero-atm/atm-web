@@ -30,7 +30,8 @@ export const cz: TranslationKeys = {
   },
   success: {
     title: 'TRANSAKCE DOKONČENA',
-    secondTitle: 'BYLO ODESLÁNO NA:'
+    secondTitle: 'NOT_TRANSLATED',
+    thirdTitle: 'NOT_TRANSLATED'
   },
   buttons: {
     cancel: 'Zrušit',

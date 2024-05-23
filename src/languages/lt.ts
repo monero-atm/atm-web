@@ -30,7 +30,8 @@ export const lt: TranslationKeys = {
   },
   success: {
     title: 'TRANSAKCIJA ĮVYKDYTA',
-    secondTitle: 'IŠSIŲSTA Į:'
+    secondTitle: 'NOT_TRANSLATED',
+    thirdTitle: 'NOT_TRANSLATED'
   },
   buttons: {
     cancel: 'Atšaukti',
