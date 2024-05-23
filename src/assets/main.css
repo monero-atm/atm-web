@@ -9,3 +9,7 @@
 .rotate-right {
   transform: rotate(90deg);
 }
+
+html{
+  overscroll-behavior: none;
+}
