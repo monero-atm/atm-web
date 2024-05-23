@@ -40,7 +40,7 @@ onBeforeMount(() => {
     </div>
 
     <div class="flex justify-center">
-      <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-1 px-3 text-xl text-white"
+      <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-2 px-4 text-3xl text-white"
         :to="{ name: 'Scan' }" data-testid="start-transaction-button">
         {{ buttons.start }}
       </RouterLink>

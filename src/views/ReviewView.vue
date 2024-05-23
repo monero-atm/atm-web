@@ -46,7 +46,7 @@ const rows = computed(() => Math.ceil(sessionStore.walletAddress.length / 80))
 </textarea>
     </div>
     <div class="flex justify-end items-center m-5">
-      <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-1 px-3 text-xl text-white"
+      <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-2 px-4 text-3xl text-white"
         :to="{ name: 'Success' }" data-testid="continue-transaction-button-review">
         {{ buttons.continue }} ({{ seconds }}{{ buttons.seconds }})</RouterLink>
     </div>
