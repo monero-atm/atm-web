@@ -1,4 +1,4 @@
-export type Home = {
+export type HomeTranslations = {
   title: string
   euroDescription: string
   czechKorunaDescription: string
@@ -43,7 +43,7 @@ export type ButtonTranslations = {
 }
 
 export type TranslationKeys = {
-  home: Home
+  home: HomeTranslations
   scan: ScanTranslations
   wallet: WalletTranslations
   payment: PaymentTranslations
