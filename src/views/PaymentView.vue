@@ -24,21 +24,21 @@ sessionStore.addMoney('czk', 321)
 <template>
   <div class="flex flex-col">
     <div class="flex flex-col flex-grow justify-center gap-3 items-center">
-      <p class="text-6xl font-black text-monero-grey m-9">{{ content.title }}</p>
+      <p class="text-8xl font-black text-monero-grey m-9">{{ content.title }}</p>
       <img class="max-w-33 max-h-48 rotate-left" src="../assets/Groupmonero-arrow.svg" alt="Arrow pointing downwards" />
-      <p class="text-lg text-center font-semibold text-monero-grey m-3">
+      <p class="text-4xl text-center font-semibold text-monero-grey m-3">
         {{ content.instruction }}
       </p>
     </div>
     <div class="flex justify-between items-center m-5">
       <RouterLink
-        class="hover:brightness-90 rounded-3xl bg-white border border-black py-2 px-4 text-3xl text-monero-grey"
+        class="hover:brightness-90 rounded-full bg-white border border-black py-2 px-4 text-5xl text-monero-grey"
         :to="{ name: 'Error', params: { errorType: 'cancelled' } }"
         :style="{ visibility: sessionStore.billAmount == 0 ? 'visible' : 'hidden' }"
         data-testid="cancel-transaction-button-payment">
         {{ buttons.cancel }}
       </RouterLink>
-      <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-2 px-4 text-3xl text-white"
+      <RouterLink class="hover:bg-opacity-75 rounded-full bg-monero-orange py-2 px-4 text-5xl text-white"
         :to="{ name: 'Review' }" :style="{ visibility: sessionStore.billAmount == 0 ? 'hidden' : 'visible' }"
         data-testid="continue-transaction-button-payment">
         {{ buttons.continue }}

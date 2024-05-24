@@ -31,12 +31,12 @@ onBeforeMount(() => {
   <div class="flex flex-col justify-evenly">
     <div>
       <div class="flex justify-center">
-        <p class="text-6xl text-center font-black text-monero-grey m-9">{{ content.title }}</p>
+        <p class="text-8xl text-center font-black text-monero-grey m-9">{{ content.title }}</p>
       </div>
       <div class="flex justify-evenly">
         <div v-for="(item, index) in items" :key="index" class="flex flex-col items-center justify-center">
           <img :src="item.imgSrc" :alt="item.altText" class="w-60 h-60 rounded-full" />
-          <p class="text-lg text-center font-semibold text-monero-grey m-3">
+          <p class="text-4xl text-center font-semibold text-monero-grey m-3">
             {{ item.description }}
           </p>
         </div>
@@ -44,7 +44,7 @@ onBeforeMount(() => {
     </div>
 
     <div class="flex justify-center">
-      <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-2 px-4 text-3xl text-white"
+      <RouterLink class="hover:bg-opacity-75 rounded-full bg-monero-orange py-2 px-4 text-5xl text-white"
         :to="{ name: 'Scan' }" data-testid="start-transaction-button">
         {{ buttons.start }}
       </RouterLink>

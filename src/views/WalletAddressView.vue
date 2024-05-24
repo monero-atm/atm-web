@@ -31,32 +31,22 @@ const rows = computed(() => Math.ceil(sessionStore.walletAddress.length / 80))
 <template>
   <div class="flex flex-col">
     <div class="flex flex-col justify-center items-center flex-grow">
-      <p class="text-6xl text-center font-black text-monero-grey m-9" data-testid="title-scanpage">
+      <p class="text-8xl text-center font-black text-monero-grey m-9" data-testid="title-scanpage">
         {{ content.title }}
       </p>
-      <p class="text-3xl font-bold text-monero-grey m-3">{{ content.secondTitle }}</p>
-      <textarea
-        readonly
-        id="wallet-address"
-        class="input break-all bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-2xl text-center resize-none"
-        :value="sessionStore.walletAddress"
-        :rows="rows"
-        data-testid="wallet-address"
-      ></textarea>
+      <p class="text-4xl font-bold text-monero-grey m-3">{{ content.secondTitle }}</p>
+      <textarea readonly id="wallet-address"
+        class="input break-all bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-4xl text-center resize-none"
+        :value="sessionStore.walletAddress" :rows="rows" data-testid="wallet-address"></textarea>
     </div>
     <div class="flex justify-between items-center m-5">
       <RouterLink
-        class="hover:brightness-90 rounded-3xl bg-white border border-black py-2 px-4 text-3xl text-monero-grey"
-        :to="{ name: 'Error', params: { errorType: 'cancelled' } }"
-        data-testid="cancel-transaction-button"
-      >
+        class="hover:brightness-90 rounded-full bg-white border border-black py-2 px-4 text-5xl text-monero-grey"
+        :to="{ name: 'Error', params: { errorType: 'cancelled' } }" data-testid="cancel-transaction-button">
         {{ buttons.cancel }}
       </RouterLink>
-      <RouterLink
-        class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-2 px-4 text-3xl text-white"
-        :to="{ name: 'Payment' }"
-        data-testid="continue-transaction-button-wallet"
-      >
+      <RouterLink class="hover:bg-opacity-75 rounded-full bg-monero-orange py-2 px-4 text-5xl text-white"
+        :to="{ name: 'Payment' }" data-testid="continue-transaction-button-wallet">
         {{ buttons.continue }} ({{ seconds }}{{ buttons.seconds }})
       </RouterLink>
     </div>
