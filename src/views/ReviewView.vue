@@ -61,7 +61,10 @@ const rows = computed(() => Math.ceil(sessionStore.walletAddress.length / 80))
         class="input break-all bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-2xl text-center resize-none"
         :value="sessionStore.walletAddress" :rows="rows" data-testid="wallet-address"></textarea>
     </div>
-    <div class="flex justify-end items-center m-5">
+    <div class="flex justify-between items-center m-5">
+      <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-2 px-4 text-3xl text-white"
+        :to="{ name: 'Payment' }" data-testid="add-more-money-button">
+        Add More Money</RouterLink>
       <RouterLink class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-2 px-4 text-3xl text-white"
         :to="{ name: 'Success' }" data-testid="continue-transaction-button-review">
         {{ buttons.continue }} ({{ seconds }}{{ buttons.seconds }})</RouterLink>
