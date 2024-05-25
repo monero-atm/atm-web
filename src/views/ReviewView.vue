@@ -4,7 +4,7 @@ import { ref, onUnmounted } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import { useLanguageStore } from '@/stores/language'
 
-let seconds = ref(6000)
+let seconds = ref(60)
 const router = useRouter()
 const sessionStore = useSessionStore()
 const languageStore = useLanguageStore()

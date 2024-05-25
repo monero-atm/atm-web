@@ -55,6 +55,9 @@ export const useSessionStore = defineStore('session', () => {
     walletAddress.value = ''
     moneyAmount.value = { eur: 0, czk: 0 }
     moneroAmount.value = 0
+    billAmount.value = 0
+    // transactionId.value = ''
+    // block.value = ''
   }
 
   return {
