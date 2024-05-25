@@ -3,8 +3,8 @@ import { RouterLink, useRouter } from 'vue-router'
 import { ref, onUnmounted, computed } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import { useLanguageStore } from '@/stores/language'
-import QRCodeVue3 from 'qrcode-vue3'
-import qrOptions from '../assets/options.json'
+// import QRCodeVue3 from 'qrcode-vue3'
+// import qrOptions from '../assets/options.json'
 import moneroLogo from '../assets/monero-xmr-logo.svg'
 
 let seconds = ref(1000)
@@ -15,7 +15,7 @@ const languageStore = useLanguageStore()
 const content = languageStore.getContent('success')
 const buttons = languageStore.getContent('buttons')
 
-const config = qrOptions
+// const config = qrOptions
 const intervalId = setInterval(() => {
   seconds.value--
   if (seconds.value === 0) {
@@ -42,14 +42,14 @@ const rows = computed(() => Math.ceil(sessionStore.transactionId.length / 58))
         :value="sessionStore.transactionId" :rows="rows" data-testid="transaction-id-success" />
 
       <p class="text-4xl font-semibold text-white m-2">{{ content.thirdTitle }}</p>
-      <input id="block-address" class="input bg-monero-grey text-white rounded-3xl py-2 px-4 text-4xl text-center mb-16"
+      <input readonly id="block-address"
+        class="input bg-monero-grey text-white rounded-3xl py-2 px-4 text-4xl text-center mb-16"
         :value="sessionStore.block" />
 
-      <p class="text-4xl font-medium text-white m-2">{{ content.secondTitle }}</p>
-      <QRCodeVue3 :width="config.width" :height="config.height" :value="sessionStore.transactionId" :image="moneroLogo"
+      <!-- <QRCodeVue3 :width="config.width" :height="config.height" :value="sessionStore.transactionId" :image="moneroLogo"
         :margin="config.margin" :qrOptions="config.qrOptions" :imageOptions="config.imageOptions"
         :dotsOptions="config.dotsOptions" :backgroundOptions="config.backgroundOptions"
-        :cornersSquareOptions="config.cornersSquareOptions" :cornersDotOptions="config.cornersDotOptions" />
+        :cornersSquareOptions="config.cornersSquareOptions" :cornersDotOptions="config.cornersDotOptions" /> -->
     </div>
     <div class="flex justify-end items-center m-5">
       <RouterLink

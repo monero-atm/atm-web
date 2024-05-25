@@ -34,20 +34,20 @@ onUnmounted(() => {
       <div class="flex w-full justify-center items-center gap-3 mb-16 mt-6 ">
         <div class="flex flex-col items-center">
           <p class="text-4xl font-semibold text-monero-grey">Euro</p>
-          <input id="money-amount-eur"
+          <input readonly id="money-amount-eur"
             class="input bg-monero-orange text-white rounded-3xl py-2 px-4 text-4xl text-center"
             :value="sessionStore.moneyAmount.eur" />
         </div>
         <div class="flex flex-col items-center">
           <p class="text-4xl font-semibold text-monero-grey">Czech Kurona </p>
-          <input id="money-amount-czk"
+          <input readonly id="money-amount-czk"
             class="input bg-monero-orange text-white rounded-3xl py-2 px-4 text-4xl text-center"
             :value="sessionStore.moneyAmount.czk" />
         </div>
       </div>
 
       <p class="text-4xl font-semibold text-monero-grey m-3">{{ content.secondTitle }}</p>
-      <input id="monero-amount" readonly
+      <input readonly id="monero-amount"
         class="input bg-monero-orange text-white rounded-3xl py-2 px-4 text-4xl text-center"
         :value="sessionStore.moneroAmount" />
 
