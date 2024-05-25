@@ -20,8 +20,7 @@ export const lt: TranslationKeys = {
   },
   review: {
     firstTitle: 'Įdėta grynųjų pinigų:',
-    secondTitle: 'Monero suma:',
-    thirdTitle: 'Paskirties adresas:'
+    secondTitle: 'Monero suma:'
   },
   error: {
     cancelled: 'TRANSAKCIJA ATŠAUKTA',

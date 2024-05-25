@@ -22,7 +22,6 @@ export type PaymentTranslations = {
 export type ReviewTranslations = {
   firstTitle: string
   secondTitle: string
-  thirdTitle: string
 }
 
 export type ErrorTranslations = {

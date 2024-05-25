@@ -53,8 +53,11 @@ function test() {
       <p class="text-8xl text-center font-black text-monero-grey m-9" data-testid="title-scanpage">
         {{ content.title }}
       </p>
-      <img class="max-w-33 max-h-48 rotate-right" src="../assets/Groupmonero-arrow.svg"
-        alt="Arrow pointing to the right" />
+      <img
+        class="max-w-33 max-h-48 rotate-right"
+        src="../assets/Groupmonero-arrow.svg"
+        alt="Arrow pointing to the right"
+      />
       <p class="text-4xl text-center font-semibold text-monero-grey m-3">
         {{ content.instruction }}
       </p>
@@ -62,9 +65,11 @@ function test() {
 
     <!-- REMOVE BEFORE PRODCUTION -->
     <div class="flex justify-center">
-      <button data-testid="generate-test-address-button"
+      <button
+        data-testid="generate-test-address-button"
         class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-2 px-5 text-2xl text-white min-w-50 m-10"
-        @click="test">
+        @click="test"
+      >
         (test)
       </button>
     </div>

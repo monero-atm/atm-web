@@ -20,8 +20,7 @@ export const en: TranslationKeys = {
   },
   review: {
     firstTitle: 'Inserted Cash:',
-    secondTitle: 'Monero amount:',
-    thirdTitle: 'Destination address:'
+    secondTitle: 'Monero amount:'
   },
   error: {
     cancelled: 'TRANSACTION CANCELED',
