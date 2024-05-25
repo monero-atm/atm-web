@@ -28,8 +28,6 @@ test('happy path without expects', async ({ page }) => {
   await page.getByTestId('generate-test-address-button').click()
   await page.getByTestId('continue-transaction-button-wallet').click()
 
-  await page.getByTestId('continue-transaction-button-payment').click()
-
   await page.getByTestId('continue-transaction-button-review').click()
 
   await page.getByTestId('return-home-button').click()
@@ -47,7 +45,6 @@ test('reseting to default language after each session', async ({ page }) => {
 
   await page.getByTestId('generate-test-address-button').click()
   await page.getByTestId('continue-transaction-button-wallet').click()
-  await page.getByTestId('continue-transaction-button-payment').click()
   await page.getByTestId('continue-transaction-button-review').click()
   await page.getByTestId('return-home-button').click()
   await page.getByTestId('start-transaction-button').click()
