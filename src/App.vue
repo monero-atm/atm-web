@@ -2,6 +2,7 @@
 import { onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
 import { useExchangeRateStore } from './stores/exchangeRate'
+import { useWebSocketStore } from './stores/websocket';
 
 const exchangeRateStore = useExchangeRateStore()
 exchangeRateStore.startRefetching()
@@ -17,6 +18,9 @@ const handlePopState = () => {
 }
 
 onMounted(() => {
+  const webSocketStore = useWebSocketStore()
+  webSocketStore.connect('http://localhost:3000/ws')
+
   window.addEventListener('beforeunload', handleBeforeUnload)
   window.addEventListener('popstate', handlePopState)
 
