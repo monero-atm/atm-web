@@ -2,27 +2,25 @@
 import { useRouter } from 'vue-router'
 import { useSessionStore } from '@/stores/session'
 import { useLanguageStore } from '@/stores/language'
-import { onBeforeMount, onUnmounted, ref } from 'vue'
+import { onBeforeMount, onUnmounted, ref, watch } from 'vue'
+import { useWebSocketStore } from '../stores/websocket'
 
 const router = useRouter()
-const sessionStore = useSessionStore()
+const webSocketStore = useWebSocketStore()
 const languageStore = useLanguageStore()
+const sessionStore = useSessionStore()
 
 const content = languageStore.getContent('scan')
 
-//remove before production
-const testWalletId =
-  '8AeWQEHR6BsbiKqRoMnyFyH7uJApeUSdzedMxCheTNB35Vqh1s27Fk6dzMj7cVnr92cUfb5nt7Ny6R9NTrWP4iFa7iegGuA'
-
 const scannedCode = ref('')
 
+/*
 function handleScannerInput(event: KeyboardEvent) {
-  /*
-  handling it as if it's a keyboard storkes and ASSUMING
-  that it ends it with ENTER, if not this will not work
-  if it's directly giving it on one go then a different 
-  approach might be necessary
-   */
+  //handling it as if it's a keyboard storkes and ASSUMING
+  //that it ends it with ENTER, if not this will not work
+  //if it's directly giving it on one go then a different
+  //approach might be necessary
+
   if (event.key === 'Enter') {
     sessionStore.setWalletAddress(scannedCode.value)
     scannedCode.value = ''
@@ -39,12 +37,19 @@ onBeforeMount(() => {
 onUnmounted(() => {
   window.removeEventListener('keydown', handleScannerInput)
 })
+*/
 
-//remove before production
-function test() {
-  sessionStore.setWalletAddress(testWalletId)
-  router.push({ name: 'Wallet' })
-}
+watch(
+  () => webSocketStore.message,
+  (newMessage) => {
+    console.log(newMessage)
+    const backendUpdate = JSON.parse(newMessage)
+    if (backendUpdate.event === 'addressin') {
+      sessionStore.setWalletAddress(backendUpdate.value)
+      router.push('/wallet');
+    }
+  }
+)
 </script>
 
 <template>
@@ -61,17 +66,6 @@ function test() {
       <p class="text-4xl text-center font-semibold text-monero-grey m-3">
         {{ content.instruction }}
       </p>
-    </div>
-
-    <!-- REMOVE BEFORE PRODCUTION -->
-    <div class="flex justify-center">
-      <button
-        data-testid="generate-test-address-button"
-        class="hover:bg-opacity-75 rounded-3xl bg-monero-orange py-2 px-5 text-2xl text-white min-w-50 m-10"
-        @click="test"
-      >
-        (test)
-      </button>
     </div>
   </div>
 </template>
