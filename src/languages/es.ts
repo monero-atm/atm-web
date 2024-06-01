@@ -36,6 +36,7 @@ export const es: TranslationKeys = {
     cancel: 'Cancela',
     continue: 'Continúe',
     seconds: 's.',
-    start: 'NOT_TRANSLATED'
+    start: 'NOT_TRANSLATED',
+    return: 'NOT_TRANSLATED',
   }
 }

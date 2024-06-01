@@ -3,8 +3,10 @@ import { RouterLink, useRouter } from 'vue-router'
 import { ref, onUnmounted, computed } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import { useLanguageStore } from '@/stores/language'
+import { useWebSocketStore } from '../stores/websocket'
 
-let seconds = ref(1005)
+const webSocketStore = useWebSocketStore()
+let seconds = ref(20)
 const router = useRouter()
 const sessionStore = useSessionStore()
 const languageStore = useLanguageStore()
@@ -16,7 +18,8 @@ const intervalId = setInterval(() => {
   seconds.value--
   if (seconds.value === 0) {
     clearInterval(intervalId)
-    router.push({ name: 'Payment' })
+    webSocketStore.sendMessage(JSON.stringify({ event: 'cancel', value: null }))
+    router.push({ name: 'Home' })
   }
 }, 1000)
 

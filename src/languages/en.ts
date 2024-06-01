@@ -36,6 +36,7 @@ export const en: TranslationKeys = {
     cancel: 'Cancel',
     continue: 'Continue',
     seconds: 'sec.',
-    start: 'Start a transaction'
+    start: 'Touch the screen or scan wallet QR to begin',
+    return: 'Returning to idle screen in'
   }
 }

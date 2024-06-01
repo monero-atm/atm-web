@@ -1,11 +1,18 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-export const useWebSocketStore = defineStore('websocket', () => {
-  const socket = ref(null);
-  const message = ref('');
+type WebSocketMessage = string;
 
-  const connect = (url) => {
+interface WebSocketState {
+  socket: WebSocket | null;
+  message: WebSocketMessage;
+}
+
+export const useWebSocketStore = defineStore('websocket', () => {
+  const socket = ref<WebSocket | null>(null);
+  const message = ref<WebSocketMessage>('');
+
+  const connect = (url: string) => {
     if (socket.value) return; // Prevent multiple connections
 
     socket.value = new WebSocket(url);
@@ -14,8 +21,8 @@ export const useWebSocketStore = defineStore('websocket', () => {
       console.log('WebSocket connection established');
     };
 
-    socket.value.onmessage = (event) => {
-      message.value = event.data; // Set the message content
+    socket.value.onmessage = (event: MessageEvent) => {
+      message.value = event.data;
     };
 
     socket.value.onclose = () => {
@@ -23,7 +30,7 @@ export const useWebSocketStore = defineStore('websocket', () => {
       socket.value = null;
     };
 
-    socket.value.onerror = (error) => {
+    socket.value.onerror = (error: Event) => {
       console.error('WebSocket error:', error);
     };
   };
@@ -34,7 +41,7 @@ export const useWebSocketStore = defineStore('websocket', () => {
     }
   };
 
-  const sendMessage = (msg) => {
+  const sendMessage = (msg: WebSocketMessage) => {
     if (socket.value && socket.value.readyState === WebSocket.OPEN) {
       socket.value.send(msg);
     }

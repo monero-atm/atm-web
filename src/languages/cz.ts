@@ -36,6 +36,7 @@ export const cz: TranslationKeys = {
     cancel: 'Zrušit',
     continue: 'Pokračovat',
     seconds: 'sek.',
-    start: 'NOT_TRANSLATED'
+    start: 'NOT_TRANSLATED',
+    return: 'NOT_TRANSLATED',
   }
 }

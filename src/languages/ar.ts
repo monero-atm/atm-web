@@ -36,6 +36,7 @@ export const ar: TranslationKeys = {
     cancel: 'إلغاء',
     continue: 'إكمال',
     seconds: 'ثانية',
-    start: 'NOT_TRANSLATED'
+    start: 'NOT_TRANSLATED',
+    return: 'NOT_TRANSLATED'
   }
 }

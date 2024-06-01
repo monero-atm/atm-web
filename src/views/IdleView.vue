@@ -28,6 +28,7 @@ const items = computed(() => [
 onBeforeMount(() => {
   sessionStore.clearSession()
   languageStore.resetLanguage()
+  webSocketStore.sendMessage(JSON.stringify({ event: 'start', value: null }))
 })
 
 watch(
@@ -44,6 +45,7 @@ watch(
 </script>
 
 <template>
+  <RouterLink :to="{ name: 'Scan' }" data-testid="start-transaction-button">
   <div class="flex flex-col justify-evenly">
     <div>
       <div class="flex justify-center">
@@ -63,14 +65,12 @@ watch(
       </div>
     </div>
 
-    <div class="flex justify-center">
-      <RouterLink
-        class="hover:bg-opacity-75 rounded-full bg-monero-orange py-2 px-4 text-5xl text-white"
-        :to="{ name: 'Scan' }"
-        data-testid="start-transaction-button"
-      >
+    <div class="flex justify-center align-middle">
+      <div class="text-monero-grey text-5xl mt-10">
         {{ buttons.start }}
-      </RouterLink>
+      </div>
     </div>
   </div>
+
+  </RouterLink>
 </template>

@@ -11,8 +11,22 @@ const languageStore = useLanguageStore()
 const sessionStore = useSessionStore()
 
 const content = languageStore.getContent('scan')
+const buttons = languageStore.getContent('buttons')
 
 const scannedCode = ref('')
+
+let seconds = ref(20)
+
+const intervalId = setInterval(() => {
+  seconds.value--
+  if (seconds.value === 0) {
+    clearInterval(intervalId)
+    webSocketStore.sendMessage(JSON.stringify({ event: 'cancel', value: null }))
+    router.push({ name: 'Home' })
+  }
+}, 1000)
+
+
 
 /*
 function handleScannerInput(event: KeyboardEvent) {
@@ -38,6 +52,10 @@ onUnmounted(() => {
   window.removeEventListener('keydown', handleScannerInput)
 })
 */
+
+onUnmounted(() => {
+  clearInterval(intervalId)
+})
 
 watch(
   () => webSocketStore.message,
@@ -65,6 +83,9 @@ watch(
       />
       <p class="text-4xl text-center font-semibold text-monero-grey m-3">
         {{ content.instruction }}
+      </p>
+      <p class="text-3xl text-center font-semibold text-monero-grey m-10">
+        {{ buttons.return }} ({{ seconds }}{{ buttons.seconds }})
       </p>
     </div>
   </div>

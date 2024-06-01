@@ -41,6 +41,7 @@ export type ButtonTranslations = {
   continue: string
   seconds: string
   start: string
+  return: string
 }
 
 export type TranslationKeys = {

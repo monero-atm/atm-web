@@ -36,6 +36,7 @@ export const lt: TranslationKeys = {
     cancel: 'Atšaukti',
     continue: 'Tęsti',
     seconds: 'sek.',
-    start: 'NOT_TRANSLATED'
+    start: 'NOT_TRANSLATED',
+    return: 'NOT_TRANSLATED'
   }
 }
