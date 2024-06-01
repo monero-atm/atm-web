@@ -1,8 +1,11 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { useExchangeRateStore } from './exchangeRate'
 
 interface MoneyAmount {
+  [currency: string]: number
+}
+
+interface MoneyRate {
   [currency: string]: number
 }
 
@@ -13,15 +16,12 @@ export const useSessionStore = defineStore('session', () => {
     eur: 0,
     czk: 0
   })
+  const moneyRate = ref<Record<string, number>>({})
   const billAmount = ref(0)
 
   // add the functionality for getting them from the server
   const transactionId = ref('7a6111c62babea729d79a5623ff7e256704cc213dab40507fb149a47a98e617d')
   const block = ref('3,051,784')
-
-  //please remove this after implementing the
-  //conversion from the db
-  const exchangeRate = useExchangeRateStore()
 
   function setWalletAddress(address: string) {
     walletAddress.value = address
@@ -39,12 +39,22 @@ export const useSessionStore = defineStore('session', () => {
     convertToMonero()
   }
 
+  function updateRate(currency: string, amount: number) {
+    moneyRate.value[currency] = amount
+  }
+
+  function getRate(currency: string) {
+    console.log(currency)
+    console.log(moneyRate.value[currency])
+    return moneyRate.value[currency] || 'Does not exist'
+  }
+
   function convertToMonero() {
     // Implement the connection to the db for calculation
     // this is only for example purposes
     for (const currency in moneyAmount.value) {
       if (Object.keys(moneyAmount.value).includes(currency)) {
-        moneroAmount.value += moneyAmount.value[currency] / Number(exchangeRate.getRate(currency))
+        moneroAmount.value += moneyAmount.value[currency] / Number(getRate(currency))
       } else {
         console.warn(`Currency ${currency} is not supported.`)
       }
@@ -63,12 +73,15 @@ export const useSessionStore = defineStore('session', () => {
   return {
     walletAddress,
     moneyAmount,
+    moneyRate,
     moneroAmount,
     billAmount,
     transactionId,
     block,
     setWalletAddress,
     addMoney,
+    updateRate,
+    getRate,
     clearSession
   }
 })

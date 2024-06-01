@@ -2,6 +2,7 @@ export type HomeTranslations = {
   title: string
   euroDescription: string
   czechKorunaDescription: string
+  start: string
 }
 
 export type ScanTranslations = {
@@ -40,8 +41,11 @@ export type ButtonTranslations = {
   cancel: string
   continue: string
   seconds: string
-  start: string
-  return: string
+}
+
+export type NavigationTranslations = {
+  proceed: string
+  cancel: string
 }
 
 export type TranslationKeys = {
@@ -53,6 +57,7 @@ export type TranslationKeys = {
   error: ErrorTranslations
   success: SuccessTranslations
   buttons: ButtonTranslations
+  nav: NavigationTranslations
 }
 
 export type Translations = Record<string, TranslationKeys>

@@ -12,6 +12,7 @@ const sessionStore = useSessionStore()
 
 const content = languageStore.getContent('scan')
 const buttons = languageStore.getContent('buttons')
+const nav = languageStore.getContent('nav')
 
 const scannedCode = ref('')
 
@@ -53,6 +54,10 @@ onUnmounted(() => {
 })
 */
 
+onBeforeMount(() => {
+  webSocketStore.sendMessage(JSON.stringify({ event: 'start', value: null }))
+})
+
 onUnmounted(() => {
   clearInterval(intervalId)
 })
@@ -85,7 +90,7 @@ watch(
         {{ content.instruction }}
       </p>
       <p class="text-3xl text-center font-semibold text-monero-grey m-10">
-        {{ buttons.return }} ({{ seconds }}{{ buttons.seconds }})
+        {{ nav.cancel }} ({{ seconds }}{{ buttons.seconds }})
       </p>
     </div>
   </div>

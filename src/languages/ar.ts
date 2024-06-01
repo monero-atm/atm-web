@@ -4,7 +4,8 @@ export const ar: TranslationKeys = {
   home: {
     title: 'NOT_TRANSLATED',
     euroDescription: 'NOT_TRANSLATED',
-    czechKorunaDescription: 'NOT_TRANSLATED'
+    czechKorunaDescription: 'NOT_TRANSLATED',
+    start: 'NOT_TRANSLATED'
   },
   scan: {
     title: 'قوموا بمسح شفرة (كيو آر) للبدء',
@@ -36,7 +37,9 @@ export const ar: TranslationKeys = {
     cancel: 'إلغاء',
     continue: 'إكمال',
     seconds: 'ثانية',
-    start: 'NOT_TRANSLATED',
-    return: 'NOT_TRANSLATED'
+  },
+  nav: {
+    proceed: 'NOT_TRANSLATED',
+    cancel: 'NOT_TRANSLATED',
   }
 }

@@ -28,7 +28,6 @@ const items = computed(() => [
 onBeforeMount(() => {
   sessionStore.clearSession()
   languageStore.resetLanguage()
-  webSocketStore.sendMessage(JSON.stringify({ event: 'start', value: null }))
 })
 
 watch(
@@ -38,10 +37,15 @@ watch(
     const backendUpdate = JSON.parse(newMessage)
     if (backendUpdate.event === 'addressin') {
       sessionStore.setWalletAddress(backendUpdate.value)
-      router.push('/wallet');
+      router.push('/wallet')
+    }
+    else if (backendUpdate.event === 'price') {
+      for (var currency of backendUpdate.value.currencies) {
+	sessionStore.updateRate(currency.short.toLowerCase(), currency.amount)
+      }
     }
   }
-);
+)
 </script>
 
 <template>
@@ -66,8 +70,8 @@ watch(
     </div>
 
     <div class="flex justify-center align-middle">
-      <div class="text-monero-grey text-5xl mt-10">
-        {{ buttons.start }}
+      <div class="text-monero-grey font-semibold text-5xl mt-10">
+        {{ content.start }}
       </div>
     </div>
   </div>

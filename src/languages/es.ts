@@ -4,7 +4,8 @@ export const es: TranslationKeys = {
   home: {
     title: 'NOT_TRANSLATED',
     euroDescription: 'NOT_TRANSLATED',
-    czechKorunaDescription: 'NOT_TRANSLATED'
+    czechKorunaDescription: 'NOT_TRANSLATED',
+    start: 'NOT_TRANSLATED'
   },
   scan: {
     title: 'Escanea el código QR para comenzar',
@@ -36,7 +37,9 @@ export const es: TranslationKeys = {
     cancel: 'Cancela',
     continue: 'Continúe',
     seconds: 's.',
-    start: 'NOT_TRANSLATED',
-    return: 'NOT_TRANSLATED',
+  },
+  nav: {
+    proceed: 'NOT_TRANSLATED',
+    cancel: 'NOT_TRANSLATED',
   }
 }

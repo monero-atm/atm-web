@@ -4,7 +4,8 @@ export const en: TranslationKeys = {
   home: {
     title: 'ACCEPTED CURRENCIES',
     euroDescription: 'Euro',
-    czechKorunaDescription: 'Czech Koruna'
+    czechKorunaDescription: 'Czech Koruna',
+    start: 'Touch the screen or scan wallet QR to begin'
   },
   scan: {
     title: 'Scan the QR code to begin',
@@ -36,7 +37,9 @@ export const en: TranslationKeys = {
     cancel: 'Cancel',
     continue: 'Continue',
     seconds: 'sec.',
-    start: 'Touch the screen or scan wallet QR to begin',
-    return: 'Returning to idle screen in'
+  },
+  nav: {
+    proceed: 'Touch the screen to continue',
+    cancel: 'Returning to idle screen in'
   }
 }
