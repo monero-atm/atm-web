@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, computed, onBeforeMount } from 'vue'
 import { useLanguageStore } from '@/stores/language'
 import { useSessionStore } from '@/stores/session'
-import { computed, onBeforeMount } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import { useWebSocketStore } from '../stores/websocket'
 import euroImage from '../assets/euro.jpg'
