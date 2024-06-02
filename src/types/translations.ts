@@ -18,6 +18,7 @@ export type WalletTranslations = {
 export type PaymentTranslations = {
   title: string
   instruction: string
+  inactivity: string
 }
 
 export type ReviewTranslations = {

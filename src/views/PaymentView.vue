@@ -22,8 +22,10 @@ const intervalId = setInterval(() => {
   if (seconds.value === 0) {
     clearInterval(intervalId)
     if (moneyInserted.value) {
-      router.push({ name: 'Review' })
+      webSocketStore.sendMessage(JSON.stringify({ event: 'txinfo', value: null }))
+      router.push({ name: 'Success' })
     } else {
+      webSocketStore.sendMessage(JSON.stringify({ event: 'cancel', value: null }))
       router.push({ name: 'Error', params: { errorType: 'cancelled' }})
     }
   }
@@ -52,11 +54,34 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <RouterLink :to="moneyInserted ? { name: 'Review' } : { name: 'Error', params: { errorType: 'cancelled' } }"
+  <RouterLink :to="moneyInserted ? { name: 'Success' } : { name: 'Error', params: { errorType: 'cancelled' } }"
   data-testid="preview-transaction-button-payment">
   <div class="flex flex-col">
     <div class="flex flex-col flex-grow justify-center gap-3 items-center">
       <p class="text-8xl font-black text-monero-grey m-9">{{ content.title }}</p>
+
+      <div v-if="moneyInserted" class="flex w-full justify-center items-center gap-3 mb-16 mt-6">
+        <div class="flex flex-col items-center">
+          <p class="text-4xl font-semibold text-monero-grey">Euro</p>
+          <input
+            readonly
+            id="money-amount-eur"
+            class="input bg-monero-orange text-white rounded-3xl py-2 px-4 text-4xl text-center"
+            :value="sessionStore.moneyAmount.eur"
+          />
+        </div>
+        <div class="flex flex-col items-center">
+          <p class="text-4xl font-semibold text-monero-grey">Czech Kurona</p>
+          <input
+            readonly
+            id="money-amount-czk"
+            class="input bg-monero-orange text-white rounded-3xl py-2 px-4 text-4xl text-center"
+            :value="sessionStore.moneyAmount.czk"
+          />
+        </div>
+      </div>
+
+     <div v-else class="flex flex-col flex-grow justify-center gap-3 items-center">
       <img
         class="max-w-33 max-h-48 rotate-left"
         src="../assets/Groupmonero-arrow.svg"
@@ -65,11 +90,15 @@ onBeforeMount(() => {
       <p class="text-4xl text-center font-semibold text-monero-grey m-3">
         {{ content.instruction }}
       </p>
+      </div>
     </div>
       <p class="text-4xl text-center font-semibold text-monero-grey m-10">
         {{ nav.proceed }}
       </p>
-      <p class="text-3xl text-center font-semibold text-monero-grey m-10">
+      <p v-if="moneyInserted" class="text-3xl text-center font-semibold text-monero-grey m-10">
+        {{ content.inactivity }} ({{ seconds }}{{ buttons.seconds }})
+      </p>
+      <p v-else class="text-3xl text-center font-semibold text-monero-grey m-10">
         {{ nav.cancel }} ({{ seconds }}{{ buttons.seconds }})
       </p>
 

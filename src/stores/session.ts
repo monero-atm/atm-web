@@ -11,7 +11,7 @@ interface MoneyRate {
 
 export const useSessionStore = defineStore('session', () => {
   const walletAddress = ref('')
-  const moneroAmount = ref(0)
+  const moneroAmount = ref('')
   const moneyAmount = ref<MoneyAmount>({
     eur: 0,
     czk: 0
@@ -21,10 +21,16 @@ export const useSessionStore = defineStore('session', () => {
 
   // add the functionality for getting them from the server
   const transactionId = ref('7a6111c62babea729d79a5623ff7e256704cc213dab40507fb149a47a98e617d')
-  const block = ref('3,051,784')
+  const block = ref(3051784)
 
   function setWalletAddress(address: string) {
     walletAddress.value = address
+  }
+
+  function setTxDetails(txid: string, height: number, xmr: string) {
+    transactionId.value = txid
+    block.value = height
+    moneroAmount.value = xmr
   }
 
   function addMoney(currency: string, amount: number) {
@@ -34,9 +40,6 @@ export const useSessionStore = defineStore('session', () => {
     } else {
       console.warn(`Currency ${currency} is not supported, yet.`)
     }
-
-    moneroAmount.value = 0
-    convertToMonero()
   }
 
   function updateRate(currency: string, amount: number) {
@@ -64,10 +67,10 @@ export const useSessionStore = defineStore('session', () => {
   function clearSession() {
     walletAddress.value = ''
     moneyAmount.value = { eur: 0, czk: 0 }
-    moneroAmount.value = 0
+    moneroAmount.value = ''
     billAmount.value = 0
-    // transactionId.value = ''
-    // block.value = ''
+    transactionId.value = ''
+    block.value = 0
   }
 
   return {
@@ -79,6 +82,7 @@ export const useSessionStore = defineStore('session', () => {
     transactionId,
     block,
     setWalletAddress,
+    setTxDetails,
     addMoney,
     updateRate,
     getRate,

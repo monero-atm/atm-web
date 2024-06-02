@@ -1,25 +1,26 @@
 <script setup lang="ts">
 import { RouterLink, useRouter } from 'vue-router'
-import { ref, onUnmounted, computed } from 'vue'
+import { ref, onUnmounted, computed, watch } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import { useLanguageStore } from '@/stores/language'
-// import QRCodeVue3 from 'qrcode-vue3'
-// import qrOptions from '../assets/options.json'
-// import moneroLogo from '../assets/monero-xmr-logo.svg'
+import { useWebSocketStore } from '../stores/websocket'
 
 let seconds = ref(1000)
+const webSocketStore = useWebSocketStore()
 const router = useRouter()
 const sessionStore = useSessionStore()
 const languageStore = useLanguageStore()
 
 const content = languageStore.getContent('success')
 const buttons = languageStore.getContent('buttons')
+const nav = languageStore.getContent('nav')
 
 // const config = qrOptions
 const intervalId = setInterval(() => {
   seconds.value--
   if (seconds.value === 0) {
     clearInterval(intervalId)
+    webSocketStore.sendMessage(JSON.stringify({ event: 'final', value: null }))
     router.push({ name: 'Home' })
   }
 }, 1000)
@@ -29,6 +30,17 @@ onUnmounted(() => {
 })
 
 const rows = computed(() => Math.ceil(sessionStore.transactionId.length / 58))
+
+watch(
+  () => webSocketStore.message,
+  (newMessage) => {
+    console.log(newMessage)
+    const backendUpdate = JSON.parse(newMessage)
+    if (backendUpdate.event === 'txinfo') {
+      // TODO
+    }
+  }
+)
 </script>
 
 <template>
@@ -69,7 +81,7 @@ const rows = computed(() => Math.ceil(sessionStore.transactionId.length / 58))
         :to="{ name: 'Home' }"
         data-testid="return-home-button"
       >
-        {{ buttons.continue }} ({{ seconds }}{{ buttons.seconds }})</RouterLink
+        {{ nav.cancel }} ({{ seconds }}{{ buttons.seconds }})</RouterLink
       >
     </div>
   </div>

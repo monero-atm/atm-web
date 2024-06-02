@@ -17,7 +17,8 @@ export const lt: TranslationKeys = {
   },
   payment: {
     title: 'Įdėkite savo pinigus',
-    instruction: 'Raskite grynųjų pinigų priėmėją šalia ekrano'
+    instruction: 'Raskite grynųjų pinigų priėmėją šalia ekrano',
+    inactivity: 'NOT_TRANSLATED'
   },
   review: {
     firstTitle: 'Įdėta grynųjų pinigų:',

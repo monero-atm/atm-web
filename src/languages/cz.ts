@@ -17,7 +17,8 @@ export const cz: TranslationKeys = {
   },
   payment: {
     title: 'Vložte své peníze',
-    instruction: 'Nalezněte akceptor hotovosti vedle obrazovky'
+    instruction: 'Nalezněte akceptor hotovosti vedle obrazovky',
+    inactivity: 'NOT_TRANSLATED'
   },
   review: {
     firstTitle: 'Vložená hotovost:',

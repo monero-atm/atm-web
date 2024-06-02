@@ -17,7 +17,8 @@ export const es: TranslationKeys = {
   },
   payment: {
     title: 'Inserta tu dinero',
-    instruction: 'Busque El Aceptador de efectivo junto a la pantalla'
+    instruction: 'Busque El Aceptador de efectivo junto a la pantalla',
+    inactivity: 'NOT_TRANSLATED'
   },
   review: {
     firstTitle: 'Efectivo insertado:',

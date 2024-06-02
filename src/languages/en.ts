@@ -17,7 +17,8 @@ export const en: TranslationKeys = {
   },
   payment: {
     title: 'Insert your money',
-    instruction: 'Find the Cash Acceptor next to the screen'
+    instruction: 'Find the Cash Acceptor next to the screen',
+    inactivity: 'Proceeding to exchange in'
   },
   review: {
     firstTitle: 'Inserted Cash:',

@@ -17,7 +17,8 @@ export const ar: TranslationKeys = {
   },
   payment: {
     title: 'أدخل أموالك',
-    instruction: 'اعثر على متلقي النقود بجوار الشاشة'
+    instruction: 'اعثر على متلقي النقود بجوار الشاشة',
+    inactivity: 'NOT_TRANSLATED'
   },
   review: {
     firstTitle: 'النقدية المودعة:',
