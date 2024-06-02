@@ -2,7 +2,7 @@
 import { RouterLink, useRouter } from 'vue-router'
 import { useSessionStore } from '@/stores/session'
 import { useLanguageStore } from '@/stores/language'
-import { watch, onBeforeMount, onUnmounted, ref } from 'vue'
+import { watch, onMounted, onUnmounted, ref } from 'vue'
 import { useWebSocketStore } from '../stores/websocket'
 
 const webSocketStore = useWebSocketStore()
@@ -48,7 +48,7 @@ onUnmounted(() => {
   clearInterval(intervalId)
 })
 
-onBeforeMount(() => {
+onMounted(() => {
   webSocketStore.sendMessage(JSON.stringify({ event: 'moneyin', value: null }))
 })
 </script>

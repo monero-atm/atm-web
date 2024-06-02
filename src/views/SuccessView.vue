@@ -20,13 +20,13 @@ const intervalId = setInterval(() => {
   seconds.value--
   if (seconds.value === 0) {
     clearInterval(intervalId)
-    webSocketStore.sendMessage(JSON.stringify({ event: 'final', value: null }))
     router.push({ name: 'Home' })
   }
 }, 1000)
 
 onUnmounted(() => {
   clearInterval(intervalId)
+  webSocketStore.sendMessage(JSON.stringify({ event: 'final', value: null }))
 })
 
 const rows = computed(() => Math.ceil(sessionStore.transactionId.length / 58))

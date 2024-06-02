@@ -3,7 +3,9 @@ import { RouterLink, useRouter, useRoute } from 'vue-router'
 import { ref, onUnmounted, computed } from 'vue'
 import { useLanguageStore } from '@/stores/language'
 import type { ErrorTranslations } from '@/types/translations'
+import { useWebSocketStore } from '../stores/websocket'
 
+const webSocketStore = useWebSocketStore()
 let seconds = ref(10)
 const router = useRouter()
 const route = useRoute()
@@ -21,6 +23,7 @@ const intervalId = setInterval(() => {
 }, 1000)
 
 onUnmounted(() => {
+  webSocketStore.sendMessage(JSON.stringify({ event: 'final', value: null }))
   clearInterval(intervalId)
 })
 
