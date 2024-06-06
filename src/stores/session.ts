@@ -17,26 +17,24 @@ export const useSessionStore = defineStore('session', () => {
     czk: 0
   })
   const moneyRate = ref<Record<string, number>>({})
-  const billAmount = ref(0)
 
   // add the functionality for getting them from the server
-  const transactionId = ref('7a6111c62babea729d79a5623ff7e256704cc213dab40507fb149a47a98e617d')
-  const block = ref(3051784)
+  const transactionId = ref('')
+
+  const moneropayStatus = ref(false)
 
   function setWalletAddress(address: string) {
     walletAddress.value = address
   }
 
-  function setTxDetails(txid: string, height: number, xmr: string) {
+  function setTxDetails(txid: string, xmr: string) {
     transactionId.value = txid
-    block.value = height
     moneroAmount.value = xmr
   }
 
   function addMoney(currency: string, amount: number) {
     if (currency in moneyAmount.value) {
       moneyAmount.value[currency] += amount
-      billAmount.value += 1
     } else {
       console.warn(`Currency ${currency} is not supported, yet.`)
     }
@@ -46,12 +44,23 @@ export const useSessionStore = defineStore('session', () => {
     moneyRate.value[currency] = amount
   }
 
-  function getRate(currency: string) {
-    console.log(currency)
-    console.log(moneyRate.value[currency])
-    return moneyRate.value[currency] || 'Does not exist'
+  function setMpayStatus(status: boolean) {
+    moneropayStatus.value = status
   }
 
+  function getMpayStatus() {
+    return moneropayStatus.value
+  }
+
+  function getRate(currency: string) {
+    if (moneyRate.value[currency]) {
+        return moneyRate.value[currency].toFixed(2)
+    } else {
+        return 'Does not exist'
+    }
+  }
+
+/*
   function convertToMonero() {
     // Implement the connection to the db for calculation
     // this is only for example purposes
@@ -63,26 +72,26 @@ export const useSessionStore = defineStore('session', () => {
       }
     }
   }
+*/
 
   function clearSession() {
     walletAddress.value = ''
     moneyAmount.value = { eur: 0, czk: 0 }
     moneroAmount.value = ''
-    billAmount.value = 0
     transactionId.value = ''
-    block.value = 0
   }
 
   return {
     walletAddress,
     moneyAmount,
     moneyRate,
+    moneropayStatus,
     moneroAmount,
-    billAmount,
     transactionId,
-    block,
     setWalletAddress,
     setTxDetails,
+    getMpayStatus,
+    setMpayStatus,
     addMoney,
     updateRate,
     getRate,

@@ -37,7 +37,7 @@ watch(
     console.log(newMessage)
     const backendUpdate = JSON.parse(newMessage)
     if (backendUpdate.event === 'txinfo') {
-      // TODO
+      sessionStore.setTxInfo(backendUpdate.data.txid, backendUpdate.data.amount)
     }
   }
 )
@@ -67,7 +67,7 @@ watch(
         readonly
         id="block-address"
         class="input bg-monero-grey text-white rounded-3xl py-2 px-4 text-4xl text-center mb-16"
-        :value="sessionStore.block"
+        :value="sessionStore.moneroAmount + ' XMR'"
       />
 
       <!-- <QRCodeVue3 :width="config.width" :height="config.height" :value="sessionStore.transactionId" :image="moneroLogo"
