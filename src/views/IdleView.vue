@@ -51,8 +51,7 @@ watch(
 </script>
 
 <template>
-  <RouterLink :to="{ name: 'Scan' }" data-testid="start-transaction-button">
-  <div class="flex flex-col justify-evenly">
+  <RouterLink :to="{ name: 'Scan' }" data-testid="start-transaction-button" class="flex flex-col justify-center">
     <div>
       <div class="flex justify-center">
         <p class="text-8xl text-center font-black text-monero-grey m-9">{{ content.title }}</p>
@@ -64,7 +63,7 @@ watch(
           class="flex flex-col items-center justify-center"
         >
           <img :src="item.imgSrc" :alt="item.altText" class="w-60 h-60 rounded-full" />
-          <p class="text-4xl text-center font-semibold text-monero-grey m-3">
+          <p class="text-2xl text-center text-monero-grey m-3">
             {{ item.description }}
           </p>
         </div>
@@ -72,11 +71,9 @@ watch(
     </div>
 
     <div class="flex justify-center align-middle">
-      <div class="text-monero-grey font-semibold text-5xl mt-10">
+      <div class="text-monero-grey text-5xl mt-10">
         {{ content.start }}
       </div>
     </div>
-  </div>
-
   </RouterLink>
 </template>

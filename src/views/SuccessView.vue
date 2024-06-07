@@ -37,7 +37,10 @@ watch(
     console.log(newMessage)
     const backendUpdate = JSON.parse(newMessage)
     if (backendUpdate.event === 'txinfo') {
-      sessionStore.setTxInfo(backendUpdate.data.txid, backendUpdate.data.amount)
+      sessionStore.setTxInfo(backendUpdate.value.tx, backendUpdate.value.amount)
+    }
+    if (backendUpdate.event === 'error') {
+      router.push({ name: 'Error', params: { errorType: 'exchange' }})
     }
   }
 )

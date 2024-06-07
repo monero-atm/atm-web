@@ -5,7 +5,7 @@ export const en: TranslationKeys = {
     title: 'ACCEPTED CURRENCIES',
     euroDescription: 'Euro',
     czechKorunaDescription: 'Czech Koruna',
-    start: 'Touch the screen or scan wallet QR to begin'
+    start: 'Tap the screen to begin'
   },
   scan: {
     title: 'Scan the QR code to begin',
@@ -13,7 +13,7 @@ export const en: TranslationKeys = {
   },
   wallet: {
     title: 'Verify your wallet address',
-    secondTitle: 'Wallet ID:'
+    secondTitle: 'Wallet address:'
   },
   payment: {
     title: 'Insert your money',
@@ -27,7 +27,7 @@ export const en: TranslationKeys = {
   error: {
     cancelled: 'TRANSACTION CANCELED',
     exchange: 'EXCHANGE ERROR',
-    invalidID: 'INVALID WALLET ID'
+    invalidID: 'INVALID WALLET ADDRESS'
   },
   success: {
     title: 'TRANSACTION COMPLETED',
@@ -40,7 +40,7 @@ export const en: TranslationKeys = {
     seconds: 'sec.',
   },
   nav: {
-    proceed: 'Touch the screen to continue',
+    proceed: 'Tap the screen to continue',
     cancel: 'Returning to idle screen in'
   }
 }

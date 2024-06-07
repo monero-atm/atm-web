@@ -37,6 +37,7 @@ export const useLanguageStore = defineStore('language', () => {
   }
 
   return {
+    translations,
     selectedLanguage,
     getContent,
     setLanguage,
