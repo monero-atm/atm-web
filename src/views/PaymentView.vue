@@ -46,6 +46,7 @@ watch(
 
 onUnmounted(() => {
   clearInterval(intervalId)
+  webSocketStore.sendMessage(JSON.stringify({ event: 'txinfo', value: null }))
 })
 
 onMounted(() => {

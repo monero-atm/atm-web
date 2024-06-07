@@ -26,10 +26,11 @@ const intervalId = setInterval(() => {
 
 onUnmounted(() => {
   clearInterval(intervalId)
-  webSocketStore.sendMessage(JSON.stringify({ event: 'final', value: null }))
 })
 
 const rows = computed(() => Math.ceil(sessionStore.transactionId.length / 58))
+
+const done = ref(false)
 
 watch(
   () => webSocketStore.message,
@@ -37,7 +38,8 @@ watch(
     console.log(newMessage)
     const backendUpdate = JSON.parse(newMessage)
     if (backendUpdate.event === 'txinfo') {
-      sessionStore.setTxInfo(backendUpdate.value.tx, backendUpdate.value.amount)
+      sessionStore.setTxDetails(backendUpdate.value.tx, backendUpdate.value.amount)
+      done.value = true
     }
     if (backendUpdate.event === 'error') {
       router.push({ name: 'Error', params: { errorType: 'exchange' }})
@@ -47,7 +49,7 @@ watch(
 </script>
 
 <template>
-  <div class="flex flex-col bg-monero-orange">
+  <div v-if="done" class="flex flex-col bg-monero-orange">
     <div class="flex flex-col flex-grow justify-center items-center success">
       <p class="text-8xl text-center font-black text-white m-9">{{ content.title }}</p>
       <img

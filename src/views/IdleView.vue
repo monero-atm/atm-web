@@ -43,7 +43,7 @@ watch(
 	sessionStore.updateRate(currency.short.toLowerCase(), currency.amount)
       }
     }
-    else if (backendUpdate.event === 'mpay_status') {
+    else if (backendUpdate.event === 'mpay_health') {
       sessionStore.setMpayStatus(backendUpdate.value)
     }
   }
