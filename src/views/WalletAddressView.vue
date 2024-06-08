@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, useRouter } from 'vue-router'
-import { ref, onUnmounted, computed } from 'vue'
+import { ref, onUnmounted, onBeforeMount, computed } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import { useLanguageStore } from '@/stores/language'
 import { useWebSocketStore } from '../stores/websocket'
@@ -26,6 +26,10 @@ const intervalId = setInterval(() => {
 
 onUnmounted(() => {
   clearInterval(intervalId)
+})
+
+onBeforeMount(() => {
+  webSocketStore.sendMessage(JSON.stringify({ event: 'start', value: null }))
 })
 
 //can be changed depending on how much letters you wish to keep in a single line

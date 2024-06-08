@@ -17,7 +17,8 @@
     "flag-icons": "^7.2.1",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vue3-spinners": "^1.2.2"
   },
   "devDependencies": {
     "@playwright/test": "^1.43.0",

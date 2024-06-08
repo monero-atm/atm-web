@@ -4,6 +4,7 @@ import { ref, onUnmounted, computed, watch } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import { useLanguageStore } from '@/stores/language'
 import { useWebSocketStore } from '../stores/websocket'
+import { VueSpinner } from 'vue3-spinners'
 
 let seconds = ref(1000)
 const webSocketStore = useWebSocketStore()
@@ -89,5 +90,8 @@ watch(
         {{ nav.cancel }} ({{ seconds }}{{ buttons.seconds }})</RouterLink
       >
     </div>
+  </div>
+  <div v-else class="flex flex-col flex-grow justify-center items-center success">
+  <VueSpinner size="40" color="black" />
   </div>
 </template>

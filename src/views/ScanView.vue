@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'
 import { useSessionStore } from '@/stores/session'
 import { useLanguageStore } from '@/stores/language'
-import { onBeforeMount, onUnmounted, ref, watch } from 'vue'
+import { onUnmounted, ref, watch } from 'vue'
 import { useWebSocketStore } from '../stores/websocket'
 
 const router = useRouter()
@@ -53,10 +53,6 @@ onUnmounted(() => {
   window.removeEventListener('keydown', handleScannerInput)
 })
 */
-
-onBeforeMount(() => {
-  webSocketStore.sendMessage(JSON.stringify({ event: 'start', value: null }))
-})
 
 onUnmounted(() => {
   clearInterval(intervalId)
