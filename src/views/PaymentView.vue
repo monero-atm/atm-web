@@ -72,7 +72,7 @@ onMounted(() => {
           />
         </div>
         <div class="flex flex-col items-center">
-          <p class="text-4xl font-semibold text-monero-grey">Czech Kurona</p>
+          <p class="text-4xl font-semibold text-monero-grey">Czech Koruna</p>
           <input
             readonly
             id="money-amount-czk"
