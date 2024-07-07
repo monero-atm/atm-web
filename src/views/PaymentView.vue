@@ -26,7 +26,7 @@ const intervalId = setInterval(() => {
       router.push({ name: 'Success' })
     } else {
       webSocketStore.sendMessage(JSON.stringify({ event: 'cancel', value: null }))
-      router.push({ name: 'Error', params: { errorType: 'cancelled' }})
+      router.push({ name: 'Error', params: { errorType: 'cancelled' } })
     }
   }
 }, 1000)
@@ -54,65 +54,58 @@ onUnmounted(() => {
 onMounted(() => {
   webSocketStore.sendMessage(JSON.stringify({ event: 'moneyin', value: null }))
 })
+
+const czKoruna = import.meta.env.VITE_CZECH_KORUNA
 </script>
 
 <template>
   <RouterLink :to='moneyInserted ? { name: "Success" } : ""' data-testid="preview-transaction-button-payment">
-  <div class="flex flex-col">
-    <div class="flex flex-col flex-grow justify-center gap-3 items-center">
-      <p class="text-8xl font-black text-monero-grey m-9">{{ content.title }}</p>
+    <div class="flex flex-col">
+      <div class="flex flex-col flex-grow justify-center gap-3 items-center">
+        <p class="text-8xl font-black text-monero-grey m-9">{{ content.title }}</p>
 
-      <div v-if="moneyInserted" class="flex w-full justify-center items-center gap-3 mb-16 mt-6">
-        <div class="flex flex-col items-center">
-          <p class="text-4xl font-semibold text-monero-grey">Euro</p>
-          <input
-            readonly
-            id="money-amount-eur"
-            class="input bg-monero-orange text-white rounded-3xl py-2 px-4 text-4xl text-center"
-            :value="sessionStore.moneyAmount.eur"
-          />
+        <div v-if="moneyInserted" class="flex w-full justify-center items-center gap-3 mb-16 mt-6">
+          <div class="flex flex-col items-center">
+            <p class="text-4xl font-semibold text-monero-grey">Euro</p>
+            <input readonly id="money-amount-eur"
+              class="input bg-monero-orange text-white rounded-3xl py-2 px-4 text-4xl text-center"
+              :value="sessionStore.moneyAmount.eur" />
+          </div>
+          <div v-if="czKoruna === 'true'" class="flex flex-col items-center">
+            <p class="text-4xl font-semibold text-monero-grey">Czech Koruna</p>
+            <input readonly id="money-amount-czk"
+              class="input bg-monero-orange text-white rounded-3xl py-2 px-4 text-4xl text-center"
+              :value="sessionStore.moneyAmount.czk" />
+          </div>
         </div>
-        <div class="flex flex-col items-center">
-          <p class="text-4xl font-semibold text-monero-grey">Czech Koruna</p>
-          <input
-            readonly
-            id="money-amount-czk"
-            class="input bg-monero-orange text-white rounded-3xl py-2 px-4 text-4xl text-center"
-            :value="sessionStore.moneyAmount.czk"
-          />
+
+        <div v-else class="flex flex-col flex-grow justify-center gap-3 items-center">
+          <img class="max-w-33 max-h-48 rotate-left" src="../assets/Groupmonero-arrow.svg"
+            alt="Arrow pointing downwards" />
+          <p class="text-4xl text-center font-semibold text-monero-grey m-3">
+            {{ content.instruction }}
+          </p>
         </div>
       </div>
 
-     <div v-else class="flex flex-col flex-grow justify-center gap-3 items-center">
-      <img
-        class="max-w-33 max-h-48 rotate-left"
-        src="../assets/Groupmonero-arrow.svg"
-        alt="Arrow pointing downwards"
-      />
-      <p class="text-4xl text-center font-semibold text-monero-grey m-3">
-        {{ content.instruction }}
-      </p>
+      <div v-if="moneyInserted">
+        <p class="text-4xl text-center font-semibold text-monero-grey m-10">
+          Please wait for your cash to be counted
+        </p>
+
+        <p class="text-4xl text-center font-semibold text-monero-grey m-10">
+          {{ nav.proceed }}
+        </p>
+
+        <p class="text-3xl text-center font-semibold text-monero-grey m-10">
+          {{ content.inactivity }} ({{ seconds }}{{ buttons.seconds }})
+        </p>
       </div>
-    </div>
-
-    <div v-if="moneyInserted">
-      <p class="text-4xl text-center font-semibold text-monero-grey m-10">
-        Please wait for your cash to be counted
-      </p>
-
-      <p class="text-4xl text-center font-semibold text-monero-grey m-10">
-        {{ nav.proceed }}
-      </p>
-
-      <p class="text-3xl text-center font-semibold text-monero-grey m-10">
-        {{ content.inactivity }} ({{ seconds }}{{ buttons.seconds }})
-      </p>
-    </div>
-    <div v-else>
-      <p class="text-3xl text-center font-semibold text-monero-grey m-10">
-        {{ nav.cancel }} ({{ seconds }}{{ buttons.seconds }})
-      </p>
-    </div>
+      <div v-else>
+        <p class="text-3xl text-center font-semibold text-monero-grey m-10">
+          {{ nav.cancel }} ({{ seconds }}{{ buttons.seconds }})
+        </p>
+      </div>
 
       <!-- <RouterLink
         class="hover:bg-opacity-75 rounded-full bg-monero-orange py-2 px-4 text-5xl text-white"

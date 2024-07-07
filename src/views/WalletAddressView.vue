@@ -38,28 +38,23 @@ const rows = computed(() => Math.ceil(sessionStore.walletAddress.length / 80))
 
 <template>
   <RouterLink :to="{ name: 'Payment' }" data-testid="continue-transaction-button-wallet">
-  <div class="flex flex-col">
-    <div class="flex flex-col justify-center items-center flex-grow">
-      <p class="text-8xl text-center font-black text-monero-grey m-9" data-testid="title-scanpage">
-        {{ content.title }}
-      </p>
-      <p class="text-4xl font-bold text-monero-grey m-3">{{ content.secondTitle }}</p>
-      <textarea
-        readonly
-        id="wallet-address"
-        class="input break-all bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-4xl text-center resize-none"
-        :value="sessionStore.walletAddress"
-        :rows="rows"
-        data-testid="wallet-address"
-      ></textarea>
+    <div class="flex flex-col">
+      <div class="flex flex-col justify-center items-center flex-grow">
+        <p class="text-8xl text-center font-black text-monero-grey m-9" data-testid="title-scanpage">
+          {{ content.title }}
+        </p>
+        <p class="text-4xl font-bold text-monero-grey m-3">{{ content.secondTitle }}</p>
+        <textarea readonly id="wallet-address"
+          class="input break-all bg-monero-grey text-white rounded-3xl py-2 px-4 w-11/12 text-4xl text-center resize-none"
+          :value="sessionStore.walletAddress" :rows="rows" data-testid="wallet-address"></textarea>
+      </div>
     </div>
-  </div>
-  <div class="flex text-monero-grey font-semibold justify-center text-center text-4xl items-center m-10">
+    <div class="flex text-monero-grey font-semibold justify-center text-center text-4xl items-center m-10">
 
-    {{ nav.proceed }}
-  </div>
-  <div class="flex text-monero-grey font-semibold justify-center text-center text-2xl items-center m-10">
-    {{ nav.cancel }} ({{ seconds }}{{ buttons.seconds }})
-  </div>
+      {{ nav.proceed }}
+    </div>
+    <div class="flex text-monero-grey font-semibold justify-center text-center text-2xl items-center m-10">
+      {{ nav.cancel }} ({{ seconds }}{{ buttons.seconds }})
+    </div>
   </RouterLink>
 </template>

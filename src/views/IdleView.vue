@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, computed, onBeforeMount } from 'vue'
+import { watch, onBeforeMount } from 'vue'
 import { useLanguageStore } from '@/stores/language'
 import { useSessionStore } from '@/stores/session'
 import { RouterLink, useRouter } from 'vue-router'
@@ -13,16 +13,21 @@ const webSocketStore = useWebSocketStore()
 const router = useRouter()
 
 let content = languageStore.getContent('home')
-let buttons = languageStore.getContent('buttons')
 
-const items = computed(() => [
+const czKoruna = import.meta.env.VITE_CZECH_KORUNA
+
+const items = [
   { imgSrc: euroImage, altText: 'euro cash', description: content.value.euroDescription },
-  {
-    imgSrc: czechKorunaImage,
-    altText: 'czech koruna cash',
-    description: content.value.czechKorunaDescription
-  }
-])
+]
+
+if (czKoruna == "true") {
+  items.push(
+    {
+      imgSrc: czechKorunaImage,
+      altText: 'czech koruna cash',
+      description: content.value.czechKorunaDescription
+    })
+}
 
 onBeforeMount(() => {
   sessionStore.clearSession()
@@ -40,7 +45,7 @@ watch(
     }
     else if (backendUpdate.event === 'price') {
       for (var currency of backendUpdate.value.currencies) {
-	sessionStore.updateRate(currency.short.toLowerCase(), currency.amount)
+        sessionStore.updateRate(currency.short.toLowerCase(), currency.amount)
       }
     }
     else if (backendUpdate.event === 'mpay_health') {
@@ -57,11 +62,7 @@ watch(
         <p class="text-8xl text-center font-black text-monero-grey m-9">{{ content.title }}</p>
       </div>
       <div class="flex justify-evenly">
-        <div
-          v-for="(item, index) in items"
-          :key="index"
-          class="flex flex-col items-center justify-center"
-        >
+        <div v-for="(item, index) in items" :key="index" class="flex flex-col items-center justify-center">
           <img :src="item.imgSrc" :alt="item.altText" class="w-60 h-60 rounded-full" />
           <p class="text-2xl text-center text-monero-grey m-3">
             {{ item.description }}

@@ -14,8 +14,6 @@ const content = languageStore.getContent('scan')
 const buttons = languageStore.getContent('buttons')
 const nav = languageStore.getContent('nav')
 
-const scannedCode = ref('')
-
 let seconds = ref(20)
 
 const intervalId = setInterval(() => {
@@ -26,33 +24,6 @@ const intervalId = setInterval(() => {
     router.push({ name: 'Home' })
   }
 }, 1000)
-
-
-
-/*
-function handleScannerInput(event: KeyboardEvent) {
-  //handling it as if it's a keyboard storkes and ASSUMING
-  //that it ends it with ENTER, if not this will not work
-  //if it's directly giving it on one go then a different
-  //approach might be necessary
-
-  if (event.key === 'Enter') {
-    sessionStore.setWalletAddress(scannedCode.value)
-    scannedCode.value = ''
-    router.push({ name: 'Wallet' })
-  } else {
-    scannedCode.value += event.key
-  }
-}
-
-onBeforeMount(() => {
-  window.addEventListener('keydown', handleScannerInput)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('keydown', handleScannerInput)
-})
-*/
 
 onUnmounted(() => {
   clearInterval(intervalId)
