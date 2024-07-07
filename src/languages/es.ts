@@ -22,7 +22,8 @@ export const es: TranslationKeys = {
   },
   review: {
     firstTitle: 'Efectivo insertado:',
-    secondTitle: 'Cantidad de Monero:'
+    secondTitle: 'Cantidad de Monero:',
+    instruction: 'NOT_TRANSLATED'
   },
   error: {
     cancelled: 'TRANSACCIÓN CANCELADA',

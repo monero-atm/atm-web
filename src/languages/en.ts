@@ -22,7 +22,8 @@ export const en: TranslationKeys = {
   },
   review: {
     firstTitle: 'Inserted Cash:',
-    secondTitle: 'Monero amount:'
+    secondTitle: 'Monero amount:',
+    instruction: 'Please wait for your cash to be counted'
   },
   error: {
     cancelled: 'TRANSACTION CANCELED',

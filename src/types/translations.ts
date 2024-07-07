@@ -24,6 +24,7 @@ export type PaymentTranslations = {
 export type ReviewTranslations = {
   firstTitle: string
   secondTitle: string
+  instruction: string
 }
 
 export type ErrorTranslations = {

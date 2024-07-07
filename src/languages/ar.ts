@@ -22,7 +22,8 @@ export const ar: TranslationKeys = {
   },
   review: {
     firstTitle: 'النقدية المودعة:',
-    secondTitle: 'مبلغ Monero:'
+    secondTitle: 'مبلغ Monero:',
+    instruction: 'NOT_TRANSLATED'
   },
   error: {
     cancelled: 'تم إلغاء الصفقة',

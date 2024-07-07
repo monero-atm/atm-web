@@ -22,7 +22,8 @@ export const cz: TranslationKeys = {
   },
   review: {
     firstTitle: 'Vložená hotovost:',
-    secondTitle: 'Množství Monera:'
+    secondTitle: 'Množství Monera:',
+    instruction: 'NOT_TRANSLATED'
   },
   error: {
     cancelled: 'TRANSAKCE ZRUŠENA',

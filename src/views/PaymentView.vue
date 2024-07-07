@@ -46,7 +46,9 @@ watch(
 
 onUnmounted(() => {
   clearInterval(intervalId)
-  webSocketStore.sendMessage(JSON.stringify({ event: 'txinfo', value: null }))
+  setTimeout(() => {
+    webSocketStore.sendMessage(JSON.stringify({ event: 'txinfo', value: null }))
+  }, 5000)
 })
 
 onMounted(() => {
@@ -55,8 +57,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <RouterLink :to="moneyInserted ? { name: 'Success' } : { name: 'Error', params: { errorType: 'cancelled' } }"
-  data-testid="preview-transaction-button-payment">
+  <RouterLink :to='moneyInserted ? { name: "Success" } : ""' data-testid="preview-transaction-button-payment">
   <div class="flex flex-col">
     <div class="flex flex-col flex-grow justify-center gap-3 items-center">
       <p class="text-8xl font-black text-monero-grey m-9">{{ content.title }}</p>
@@ -93,15 +94,25 @@ onMounted(() => {
       </p>
       </div>
     </div>
+
+    <div v-if="moneyInserted">
+      <p class="text-4xl text-center font-semibold text-monero-grey m-10">
+        Please wait for your cash to be counted
+      </p>
+
       <p class="text-4xl text-center font-semibold text-monero-grey m-10">
         {{ nav.proceed }}
       </p>
-      <p v-if="moneyInserted" class="text-3xl text-center font-semibold text-monero-grey m-10">
+
+      <p class="text-3xl text-center font-semibold text-monero-grey m-10">
         {{ content.inactivity }} ({{ seconds }}{{ buttons.seconds }})
       </p>
-      <p v-else class="text-3xl text-center font-semibold text-monero-grey m-10">
+    </div>
+    <div v-else>
+      <p class="text-3xl text-center font-semibold text-monero-grey m-10">
         {{ nav.cancel }} ({{ seconds }}{{ buttons.seconds }})
       </p>
+    </div>
 
       <!-- <RouterLink
         class="hover:bg-opacity-75 rounded-full bg-monero-orange py-2 px-4 text-5xl text-white"
