@@ -38,6 +38,9 @@ watch(
       sessionStore.setWalletAddress(backendUpdate.value)
       router.push('/wallet');
     }
+    else if (backendUpdate.event === 'mpay_health') {
+      sessionStore.setMpayStatus(backendUpdate.value)
+    }
   }
 )
 </script>

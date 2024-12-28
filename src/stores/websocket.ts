@@ -3,25 +3,28 @@ import { ref } from 'vue';
 
 type WebSocketMessage = string;
 
-interface WebSocketState {
-  socket: WebSocket | null;
-  message: WebSocketMessage;
-}
-
 export const useWebSocketStore = defineStore('websocket', () => {
   const socket = ref<WebSocket | null>(null);
   const message = ref<WebSocketMessage>('');
-  const isConnected = ref<boolean>(false);
+  const isConnected = ref(false);
   const reconnectInterval = 2000; // in milliseconds
+  const lastUrl = ref<string | null>(null);
 
   const connect = (url: string) => {
-    if (socket.value) return; // Prevent multiple connections
+    // If already connected or connecting, return
+    if (socket.value) return;
+
+    // Store the last used URL for potential reconnection
+    lastUrl.value = url;
 
     socket.value = new WebSocket(url);
 
     socket.value.onopen = () => {
       console.log('WebSocket connection established');
       isConnected.value = true;
+
+      // Send the cancel message on reconnection
+      sendMessage(JSON.stringify({ event: 'cancel', value: null }));
     };
 
     socket.value.onmessage = (event: MessageEvent) => {
@@ -30,9 +33,14 @@ export const useWebSocketStore = defineStore('websocket', () => {
 
     socket.value.onclose = () => {
       console.log('WebSocket connection closed');
+      
+      // Only attempt reconnect if we had a last known URL
+      if (lastUrl.value) {
+        attemptReconnect(lastUrl.value);
+      }
+
       socket.value = null;
       isConnected.value = false;
-      attemptReconnect(url);
     };
 
     socket.value.onerror = (error: Event) => {
@@ -43,6 +51,8 @@ export const useWebSocketStore = defineStore('websocket', () => {
 
   const disconnect = () => {
     if (socket.value) {
+      // Remove the last URL to prevent automatic reconnection
+      lastUrl.value = null;
       socket.value.close();
     }
   };
@@ -55,7 +65,6 @@ export const useWebSocketStore = defineStore('websocket', () => {
 
   const attemptReconnect = (url: string) => {
     console.log('Attempting to reconnect...');
-
     setTimeout(() => {
       if (!isConnected.value) {
         connect(url);

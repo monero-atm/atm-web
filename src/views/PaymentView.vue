@@ -40,6 +40,8 @@ watch(
       sessionStore.addMoney(backendUpdate.value.currency.toLowerCase(), backendUpdate.value.amount)
       moneyInserted.value = true
       seconds.value = 60
+    } else if (backendUpdate.event === 'mpay_health') {
+      sessionStore.setMpayStatus(backendUpdate.value)
     }
   }
 )

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, useRouter } from 'vue-router'
-import { ref, onUnmounted, onBeforeMount, computed } from 'vue'
+import { ref, watch, onUnmounted, onBeforeMount, computed } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import { useLanguageStore } from '@/stores/language'
 import { useWebSocketStore } from '../stores/websocket'
@@ -32,7 +32,17 @@ onBeforeMount(() => {
   webSocketStore.sendMessage(JSON.stringify({ event: 'start', value: null }))
 })
 
-//can be changed depending on how much letters you wish to keep in a single line
+watch(
+  () => webSocketStore.message,
+  (newMessage) => {
+    console.log(newMessage)
+    const backendUpdate = JSON.parse(newMessage)
+    if (backendUpdate.event === 'mpay_health') {
+      sessionStore.setMpayStatus(backendUpdate.value)
+    }
+  }
+)
+
 const rows = computed(() => Math.ceil(sessionStore.walletAddress.length / 80))
 </script>
 

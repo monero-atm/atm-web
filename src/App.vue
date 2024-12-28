@@ -1,8 +1,10 @@
+<!-- App.vue -->
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
 import { useExchangeRateStore } from './stores/exchangeRate'
-import { useWebSocketStore } from './stores/websocket';
+import { useWebSocketStore } from './stores/websocket'
+import NetworkWarning from './components/NetworkWarning.vue'
 
 const exchangeRateStore = useExchangeRateStore()
 exchangeRateStore.startRefetching()
@@ -37,6 +39,8 @@ onBeforeUnmount(() => {
   window.removeEventListener('popstate', handlePopState)
 })
 </script>
+
 <template>
+  <NetworkWarning />
   <RouterView />
 </template>

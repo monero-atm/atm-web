@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { RouterLink, useRouter } from 'vue-router'
-import { ref, onUnmounted } from 'vue'
+import { ref, onUnmounted, watch } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import { useLanguageStore } from '@/stores/language'
+import { useWebSocketStore } from '../stores/websocket'
 
+const webSocketStore = useWebSocketStore()
 let seconds = ref(60)
 const router = useRouter()
 const sessionStore = useSessionStore()
@@ -23,6 +25,18 @@ const intervalId = setInterval(() => {
 onUnmounted(() => {
   clearInterval(intervalId)
 })
+
+watch(
+  () => webSocketStore.message,
+  (newMessage) => {
+    console.log(newMessage)
+    const backendUpdate = JSON.parse(newMessage)
+    if (backendUpdate.event === 'mpay_health') {
+      sessionStore.setMpayStatus(backendUpdate.value)
+    }
+  }
+)
+
 </script>
 
 <template>
